@@ -1,0 +1,18 @@
+{
+  "version": "0.1.0",
+  "configurations": [
+    {
+      "name": "Run Debug",
+      "request": "launch",
+      "type": "dart",
+    },
+    {
+      "name": "Run Debug Emulator",
+      "request": "launch",
+      "type": "dart",
+      "args": [
+        "--dart-define=IS_EMULATOR=true"
+      ]
+    }
+  ]
+}
