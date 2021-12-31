@@ -20,9 +20,9 @@ service cloud.firestore {
   function isValidMemo(memo) {
     return memo.size() == 4
       && 'title' in memo
-      && isValidString(title, 0, 10000)
+      && isValidString(memo.title, 0, 10000)
       && 'text' in memo
-      && isValidString(title, 0, 100000);
+      && isValidString(memo.text, 1, 100000);
   }
 
   ///

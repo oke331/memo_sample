@@ -24,7 +24,7 @@ class _$MemoTearOff {
 
   _Memo call(
       {String title = '',
-      String text = '',
+      required String text,
       required String createdAt,
       required String updatedAt}) {
     return _Memo(
@@ -148,7 +148,7 @@ class __$MemoCopyWithImpl<$Res> extends _$MemoCopyWithImpl<$Res>
 class _$_Memo implements _Memo {
   const _$_Memo(
       {this.title = '',
-      this.text = '',
+      required this.text,
       required this.createdAt,
       required this.updatedAt});
 
@@ -157,7 +157,6 @@ class _$_Memo implements _Memo {
   @JsonKey()
   @override
   final String title;
-  @JsonKey()
   @override
   final String text;
   @override
@@ -203,7 +202,7 @@ class _$_Memo implements _Memo {
 abstract class _Memo implements Memo {
   const factory _Memo(
       {String title,
-      String text,
+      required String text,
       required String createdAt,
       required String updatedAt}) = _$_Memo;
 

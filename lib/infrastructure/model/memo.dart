@@ -8,7 +8,7 @@ part 'memo.g.dart';
 class Memo with _$Memo {
   const factory Memo({
     @Default('') String title,
-    @Default('') String text,
+    required String text,
     required String createdAt,
     required String updatedAt,
   }) = _Memo;
