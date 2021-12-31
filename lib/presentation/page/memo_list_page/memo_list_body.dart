@@ -25,9 +25,11 @@ class MemoListBody extends HookConsumerWidget {
           ),
       itemBuilder: (context, snapshot) {
         final memo = snapshot.data();
-        return Text(
-          memo.title.isNotEmpty ? memo.title : memo.text,
-          overflow: TextOverflow.ellipsis,
+        return ListTile(
+          title: Text(
+            memo.title.isNotEmpty ? memo.title : memo.text,
+            overflow: TextOverflow.ellipsis,
+          ),
         );
       },
     );
