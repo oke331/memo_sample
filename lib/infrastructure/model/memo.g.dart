@@ -8,7 +8,7 @@ part of 'memo.dart';
 
 _$_Memo _$$_MemoFromJson(Map<String, dynamic> json) => _$_Memo(
       title: json['title'] as String? ?? '',
-      text: json['text'] as String,
+      text: json['text'] as String? ?? '',
       createdAt: json['createdAt'] as String,
       updatedAt: json['updatedAt'] as String,
     );
