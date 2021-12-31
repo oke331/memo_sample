@@ -24,8 +24,10 @@ class MessageLookup extends MessageLookupByLibrary {
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
         "appName":
             MessageLookupByLibrary.simpleMessage("Memo Sample Application"),
+        "memoListName": MessageLookupByLibrary.simpleMessage("Memo list"),
         "registerDescription": MessageLookupByLibrary.simpleMessage(
             "Welcome to Memo Sample Application! Please create an account to continue."),
+        "settingName": MessageLookupByLibrary.simpleMessage("Setting"),
         "signInDescription": MessageLookupByLibrary.simpleMessage(
             "Welcome to Memo Sample Application! Please sign in to continue.")
       };

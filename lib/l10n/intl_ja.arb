@@ -1,5 +1,10 @@
 {
+  "@_SIGN_IN_PAGE": {},
   "appName": "メモサンプルアプリ",
   "signInDescription": "メモサンプルアプリにサインインしよう！",
-  "registerDescription": "メモサンプルアプリにアカウントを登録しよう！"
+  "registerDescription": "メモサンプルアプリにアカウントを登録しよう！",
+  "@_MEMO_LIST": {},
+  "memoListName": "メモリスト",
+  "@_SETTING_PAGE": {},
+  "settingName": "設定"
 }

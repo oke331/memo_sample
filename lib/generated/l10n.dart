@@ -79,6 +79,26 @@ class S {
       args: [],
     );
   }
+
+  /// `Memo list`
+  String get memoListName {
+    return Intl.message(
+      'Memo list',
+      name: 'memoListName',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Setting`
+  String get settingName {
+    return Intl.message(
+      'Setting',
+      name: 'settingName',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

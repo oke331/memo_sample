@@ -23,8 +23,10 @@ class MessageLookup extends MessageLookupByLibrary {
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
         "appName": MessageLookupByLibrary.simpleMessage("メモサンプルアプリ"),
+        "memoListName": MessageLookupByLibrary.simpleMessage("メモリスト"),
         "registerDescription":
             MessageLookupByLibrary.simpleMessage("メモサンプルアプリにアカウントを登録しよう！"),
+        "settingName": MessageLookupByLibrary.simpleMessage("設定"),
         "signInDescription":
             MessageLookupByLibrary.simpleMessage("メモサンプルアプリにサインインしよう！")
       };

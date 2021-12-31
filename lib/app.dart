@@ -1,16 +1,25 @@
 import 'package:flutter/material.dart';
 import 'package:flutterfire_ui/i10n.dart';
-import 'package:memo_sample/presentation/page/auth_gate.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:memo_sample/router.dart';
 
 import 'generated/l10n.dart';
 import 'l10n/flutter_fire_ui_ja.dart';
 
-class App extends StatelessWidget {
+class App extends HookConsumerWidget {
   const App({Key? key}) : super(key: key);
 
   @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
+  Widget build(BuildContext context, WidgetRef ref) {
+    ref.listen(
+      rooterRefreshListenableProvider,
+      (_, __) => ref.read(routerProvider).refresh(),
+    );
+
+    final router = ref.watch(routerProvider);
+    return MaterialApp.router(
+      routeInformationParser: router.routeInformationParser,
+      routerDelegate: router.routerDelegate,
       title: 'oke331/memo_sample',
       localizationsDelegates: [
         S.delegate,
@@ -24,7 +33,6 @@ class App extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.green,
       ),
-      home: const AuthGate(),
     );
   }
 }
