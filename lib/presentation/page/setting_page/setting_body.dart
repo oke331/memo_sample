@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:memo_sample/presentation/controller/auth_controller/auth_controller.dart';
+import 'package:memo_sample/presentation/page/setting_page/logout_dialog.dart';
 import 'package:memo_sample/presentation/page/setting_page/setting_tile.dart';
 
 class _TileContent {
@@ -20,7 +20,12 @@ class SettingBody extends HookConsumerWidget {
     final _tileContents = [
       _TileContent(
         text: 'ログアウト',
-        onTap: ref.read(authControllerProvider.notifier).signOut,
+        onTap: () async {
+          await showDialog(
+            context: context,
+            builder: (_) => const LogoutDialog(),
+          );
+        },
       ),
     ];
     return ListView.separated(
