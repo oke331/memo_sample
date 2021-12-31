@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:memo_sample/util/timestamp_converter.dart';
 
 part 'memo.freezed.dart';
 part 'memo.g.dart';
@@ -9,8 +10,8 @@ class Memo with _$Memo {
   const factory Memo({
     @Default('') String title,
     required String text,
-    required String createdAt,
-    required String updatedAt,
+    @TimestampConverter() required DateTime createdAt,
+    @TimestampConverter() required DateTime updatedAt,
   }) = _Memo;
 
   factory Memo.fromJson(Map<String, dynamic> json) => _$MemoFromJson(json);

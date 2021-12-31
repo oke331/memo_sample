@@ -25,8 +25,8 @@ class _$MemoTearOff {
   _Memo call(
       {String title = '',
       required String text,
-      required String createdAt,
-      required String updatedAt}) {
+      @TimestampConverter() required DateTime createdAt,
+      @TimestampConverter() required DateTime updatedAt}) {
     return _Memo(
       title: title,
       text: text,
@@ -47,8 +47,10 @@ const $Memo = _$MemoTearOff();
 mixin _$Memo {
   String get title => throw _privateConstructorUsedError;
   String get text => throw _privateConstructorUsedError;
-  String get createdAt => throw _privateConstructorUsedError;
-  String get updatedAt => throw _privateConstructorUsedError;
+  @TimestampConverter()
+  DateTime get createdAt => throw _privateConstructorUsedError;
+  @TimestampConverter()
+  DateTime get updatedAt => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -59,7 +61,11 @@ mixin _$Memo {
 abstract class $MemoCopyWith<$Res> {
   factory $MemoCopyWith(Memo value, $Res Function(Memo) then) =
       _$MemoCopyWithImpl<$Res>;
-  $Res call({String title, String text, String createdAt, String updatedAt});
+  $Res call(
+      {String title,
+      String text,
+      @TimestampConverter() DateTime createdAt,
+      @TimestampConverter() DateTime updatedAt});
 }
 
 /// @nodoc
@@ -89,11 +95,11 @@ class _$MemoCopyWithImpl<$Res> implements $MemoCopyWith<$Res> {
       createdAt: createdAt == freezed
           ? _value.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
-              as String,
+              as DateTime,
       updatedAt: updatedAt == freezed
           ? _value.updatedAt
           : updatedAt // ignore: cast_nullable_to_non_nullable
-              as String,
+              as DateTime,
     ));
   }
 }
@@ -103,7 +109,11 @@ abstract class _$MemoCopyWith<$Res> implements $MemoCopyWith<$Res> {
   factory _$MemoCopyWith(_Memo value, $Res Function(_Memo) then) =
       __$MemoCopyWithImpl<$Res>;
   @override
-  $Res call({String title, String text, String createdAt, String updatedAt});
+  $Res call(
+      {String title,
+      String text,
+      @TimestampConverter() DateTime createdAt,
+      @TimestampConverter() DateTime updatedAt});
 }
 
 /// @nodoc
@@ -134,11 +144,11 @@ class __$MemoCopyWithImpl<$Res> extends _$MemoCopyWithImpl<$Res>
       createdAt: createdAt == freezed
           ? _value.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
-              as String,
+              as DateTime,
       updatedAt: updatedAt == freezed
           ? _value.updatedAt
           : updatedAt // ignore: cast_nullable_to_non_nullable
-              as String,
+              as DateTime,
     ));
   }
 }
@@ -149,8 +159,8 @@ class _$_Memo implements _Memo {
   const _$_Memo(
       {this.title = '',
       required this.text,
-      required this.createdAt,
-      required this.updatedAt});
+      @TimestampConverter() required this.createdAt,
+      @TimestampConverter() required this.updatedAt});
 
   factory _$_Memo.fromJson(Map<String, dynamic> json) => _$$_MemoFromJson(json);
 
@@ -160,9 +170,11 @@ class _$_Memo implements _Memo {
   @override
   final String text;
   @override
-  final String createdAt;
+  @TimestampConverter()
+  final DateTime createdAt;
   @override
-  final String updatedAt;
+  @TimestampConverter()
+  final DateTime updatedAt;
 
   @override
   String toString() {
@@ -203,8 +215,8 @@ abstract class _Memo implements Memo {
   const factory _Memo(
       {String title,
       required String text,
-      required String createdAt,
-      required String updatedAt}) = _$_Memo;
+      @TimestampConverter() required DateTime createdAt,
+      @TimestampConverter() required DateTime updatedAt}) = _$_Memo;
 
   factory _Memo.fromJson(Map<String, dynamic> json) = _$_Memo.fromJson;
 
@@ -213,9 +225,11 @@ abstract class _Memo implements Memo {
   @override
   String get text;
   @override
-  String get createdAt;
+  @TimestampConverter()
+  DateTime get createdAt;
   @override
-  String get updatedAt;
+  @TimestampConverter()
+  DateTime get updatedAt;
   @override
   @JsonKey(ignore: true)
   _$MemoCopyWith<_Memo> get copyWith => throw _privateConstructorUsedError;
