@@ -1,12 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:memo_sample/presentation/controller/auth_controller/auth_controller.dart';
+import 'package:memo_sample/presentation/controller/memo_controller/memo_controller.dart';
 import 'package:memo_sample/router.dart';
 
 import '../../constant_color.dart';
 
-class LogoutDialog extends HookConsumerWidget {
-  const LogoutDialog({Key? key}) : super(key: key);
+class DeleteDialog extends HookConsumerWidget {
+  const DeleteDialog({
+    Key? key,
+    required this.memoId,
+  }) : super(key: key);
+
+  final String memoId;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -19,7 +24,8 @@ class LogoutDialog extends HookConsumerWidget {
           child: const Text('キャンセル'),
         ),
         TextButton(
-          onPressed: ref.read(authControllerProvider.notifier).signOut,
+          onPressed: () =>
+              ref.read(memoControllerProvider).delete(memoId: memoId),
           child: const Text(
             '削除',
             style: TextStyle(color: ConstantColor.warningColor),

@@ -5,6 +5,10 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:memo_sample/infrastructure/model/memo.dart';
 import 'package:memo_sample/presentation/controller/auth_controller/auth_controller.dart';
 
+import 'memo_list_tile.dart';
+
+final currentMemo = Provider<Memo>((_) => throw UnimplementedError());
+
 class MemoListBody extends HookConsumerWidget {
   const MemoListBody({Key? key}) : super(key: key);
   @override
@@ -25,11 +29,9 @@ class MemoListBody extends HookConsumerWidget {
           ),
       itemBuilder: (context, snapshot) {
         final memo = snapshot.data();
-        return ListTile(
-          title: Text(
-            memo.title.isNotEmpty ? memo.title : memo.text,
-            overflow: TextOverflow.ellipsis,
-          ),
+        return ProviderScope(
+          overrides: [currentMemo.overrideWithValue(memo)],
+          child: const MemoListTile(),
         );
       },
     );

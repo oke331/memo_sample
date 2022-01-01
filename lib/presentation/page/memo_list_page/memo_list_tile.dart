@@ -1,18 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:memo_sample/infrastructure/model/memo.dart';
+import 'package:memo_sample/presentation/page/memo_list_page/memo_list_body.dart';
 import 'package:memo_sample/util/date_time_formatter.dart';
 
-class MemoListTile extends HookConsumerWidget {
-  const MemoListTile({
-    Key? key,
-    required this.memo,
-  }) : super(key: key);
+import 'delete_dialog.dart';
 
-  final Memo memo;
+class MemoListTile extends HookConsumerWidget {
+  const MemoListTile({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final memo = ref.watch(currentMemo);
     return ListTile(
       title: Text(
         memo.title.isNotEmpty ? memo.title : memo.text,
@@ -27,7 +25,10 @@ class MemoListTile extends HookConsumerWidget {
       trailing: Row(
         children: [
           IconButton(
-            onPressed: () {},
+            onPressed: () => showDialog(
+              context: context,
+              builder: (_) => DeleteDialog(memoId: memo.id),
+            ),
             icon: const Icon(Icons.delete),
           ),
           IconButton(
