@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:memo_sample/generated/l10n.dart';
 import 'package:memo_sample/router.dart';
 
 class MemoListPage extends ConsumerWidget {
@@ -9,7 +10,7 @@ class MemoListPage extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('メモリスト'),
+        title: Text(S.of(context).memoListName),
         actions: [
           IconButton(
             icon: const Icon(Icons.settings),

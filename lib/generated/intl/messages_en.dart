@@ -24,11 +24,23 @@ class MessageLookup extends MessageLookupByLibrary {
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
         "appName":
             MessageLookupByLibrary.simpleMessage("Memo Sample Application"),
+        "cancel": MessageLookupByLibrary.simpleMessage("cancel"),
+        "darkTheme": MessageLookupByLibrary.simpleMessage("Dark Theme"),
+        "delete": MessageLookupByLibrary.simpleMessage("delete"),
+        "delete_comment":
+            MessageLookupByLibrary.simpleMessage("Would you like to delete?"),
+        "logout": MessageLookupByLibrary.simpleMessage("Logout"),
+        "logout_message":
+            MessageLookupByLibrary.simpleMessage("Would you like to log out?"),
         "memoListName": MessageLookupByLibrary.simpleMessage("Memo list"),
+        "off": MessageLookupByLibrary.simpleMessage("OFF"),
+        "on": MessageLookupByLibrary.simpleMessage("ON"),
         "registerDescription": MessageLookupByLibrary.simpleMessage(
             "Welcome to Memo Sample Application! Please create an account to continue."),
         "settingName": MessageLookupByLibrary.simpleMessage("Setting"),
         "signInDescription": MessageLookupByLibrary.simpleMessage(
-            "Welcome to Memo Sample Application! Please sign in to continue.")
+            "Welcome to Memo Sample Application! Please sign in to continue."),
+        "systemTheme": MessageLookupByLibrary.simpleMessage("System Theme"),
+        "themeModeName": MessageLookupByLibrary.simpleMessage("Dart Theme Mode")
       };
 }

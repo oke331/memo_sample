@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:memo_sample/generated/l10n.dart';
 import 'package:memo_sample/presentation/page/setting_page/logout_dialog.dart';
 import 'package:memo_sample/presentation/page/setting_page/setting_tile.dart';
 import 'package:memo_sample/router.dart';
@@ -11,11 +12,11 @@ class SettingBody extends HookConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final _tileContents = [
       SettingTile(
-        text: 'テーマ設定',
+        text: S.of(context).themeModeName,
         onTap: () => ref.read(routerProvider).go('/setting/theme_setting'),
       ),
       SettingTile(
-        text: 'ログアウト',
+        text: S.of(context).logout,
         onTap: () async {
           await showDialog(
             context: context,

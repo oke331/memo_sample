@@ -50,6 +50,36 @@ class S {
     return Localizations.of<S>(context, S);
   }
 
+  /// `cancel`
+  String get cancel {
+    return Intl.message(
+      'cancel',
+      name: 'cancel',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `ON`
+  String get on {
+    return Intl.message(
+      'ON',
+      name: 'on',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `OFF`
+  String get off {
+    return Intl.message(
+      'OFF',
+      name: 'off',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Memo Sample Application`
   String get appName {
     return Intl.message(
@@ -90,11 +120,81 @@ class S {
     );
   }
 
+  /// `delete`
+  String get delete {
+    return Intl.message(
+      'delete',
+      name: 'delete',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Would you like to delete?`
+  String get delete_comment {
+    return Intl.message(
+      'Would you like to delete?',
+      name: 'delete_comment',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Setting`
   String get settingName {
     return Intl.message(
       'Setting',
       name: 'settingName',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Logout`
+  String get logout {
+    return Intl.message(
+      'Logout',
+      name: 'logout',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Would you like to log out?`
+  String get logout_message {
+    return Intl.message(
+      'Would you like to log out?',
+      name: 'logout_message',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Dart Theme Mode`
+  String get themeModeName {
+    return Intl.message(
+      'Dart Theme Mode',
+      name: 'themeModeName',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Dark Theme`
+  String get darkTheme {
+    return Intl.message(
+      'Dark Theme',
+      name: 'darkTheme',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `System Theme`
+  String get systemTheme {
+    return Intl.message(
+      'System Theme',
+      name: 'systemTheme',
       desc: '',
       args: [],
     );

@@ -1,9 +1,22 @@
 {
+  "@_COMMON": {},
+  "cancel": "cancel",
+  "on": "ON",
+  "off": "OFF",
+  "@_SIGN_IN_PAGE": {},
   "appName": "Memo Sample Application",
   "signInDescription": "Welcome to Memo Sample Application! Please sign in to continue.",
   "registerDescription": "Welcome to Memo Sample Application! Please create an account to continue.",
   "@_MEMO_LIST": {},
   "memoListName": "Memo list",
+  "delete": "delete",
+  "delete_comment": "Would you like to delete?",
   "@_SETTING_PAGE": {},
-  "settingName": "Setting"
+  "settingName": "Setting",
+  "logout": "Logout",
+  "logout_message": "Would you like to log out?",
+  "@_THTME_MODE_PAGE": {},
+  "themeModeName": "Dart Theme Mode",
+  "darkTheme": "Dark Theme",
+  "systemTheme": "System Theme"
 }

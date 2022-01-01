@@ -23,11 +23,21 @@ class MessageLookup extends MessageLookupByLibrary {
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
         "appName": MessageLookupByLibrary.simpleMessage("メモサンプルアプリ"),
+        "cancel": MessageLookupByLibrary.simpleMessage("キャンセル"),
+        "darkTheme": MessageLookupByLibrary.simpleMessage("ダークテーマ"),
+        "delete": MessageLookupByLibrary.simpleMessage("削除"),
+        "delete_comment": MessageLookupByLibrary.simpleMessage("削除しますか？"),
+        "logout": MessageLookupByLibrary.simpleMessage("ログアウト"),
+        "logout_message": MessageLookupByLibrary.simpleMessage("ログアウトしますか？"),
         "memoListName": MessageLookupByLibrary.simpleMessage("メモリスト"),
+        "off": MessageLookupByLibrary.simpleMessage("オフ"),
+        "on": MessageLookupByLibrary.simpleMessage("オン"),
         "registerDescription":
             MessageLookupByLibrary.simpleMessage("メモサンプルアプリにアカウントを登録しよう！"),
         "settingName": MessageLookupByLibrary.simpleMessage("設定"),
         "signInDescription":
-            MessageLookupByLibrary.simpleMessage("メモサンプルアプリにサインインしよう！")
+            MessageLookupByLibrary.simpleMessage("メモサンプルアプリにサインインしよう！"),
+        "systemTheme": MessageLookupByLibrary.simpleMessage("システムテーマ"),
+        "themeModeName": MessageLookupByLibrary.simpleMessage("ダークテーマモード")
       };
 }

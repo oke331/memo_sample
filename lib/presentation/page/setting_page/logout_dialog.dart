@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:memo_sample/generated/l10n.dart';
 import 'package:memo_sample/presentation/controller/auth_controller/auth_controller.dart';
 import 'package:memo_sample/router.dart';
 
@@ -10,15 +11,15 @@ class LogoutDialog extends HookConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final router = ref.watch(routerProvider);
     return AlertDialog(
-      title: const Text('ログアウトしますか？'),
+      title: Text(S.of(context).logout_message),
       actions: [
         TextButton(
           onPressed: () => router.pop(context),
-          child: const Text('キャンセル'),
+          child: Text(S.of(context).cancel),
         ),
         TextButton(
           onPressed: ref.read(authControllerProvider.notifier).signOut,
-          child: const Text('ログアウト'),
+          child: Text(S.of(context).logout),
         )
       ],
     );
