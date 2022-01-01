@@ -21,7 +21,7 @@ class App extends HookConsumerWidget {
     return MaterialApp.router(
       routeInformationParser: router.routeInformationParser,
       routerDelegate: router.routerDelegate,
-      title: 'oke331/memo_sample',
+      onGenerateTitle: (context) => S.of(context).appName,
       localizationsDelegates: [
         S.delegate,
         GlobalMaterialLocalizations.delegate,
