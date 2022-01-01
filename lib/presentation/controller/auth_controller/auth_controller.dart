@@ -5,11 +5,11 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 part "auth_controller.freezed.dart";
 
 final authControllerProvider = StateNotifierProvider<AuthController, AuthState>(
-  (ref) => AuthController(FirebaseAuth.instance),
+  (ref) => AuthController._(FirebaseAuth.instance),
 );
 
 class AuthController extends StateNotifier<AuthState> {
-  AuthController(
+  AuthController._(
     this._auth,
   ) : super(AuthState()) {
     _auth.authStateChanges().listen(

@@ -2,15 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:memo_sample/presentation/page/setting_page/logout_dialog.dart';
 import 'package:memo_sample/presentation/page/setting_page/setting_tile.dart';
-
-class _TileContent {
-  _TileContent({
-    required this.text,
-    required this.onTap,
-  });
-  final String text;
-  final VoidCallback onTap;
-}
+import 'package:memo_sample/router.dart';
 
 class SettingBody extends HookConsumerWidget {
   const SettingBody({Key? key}) : super(key: key);
@@ -18,7 +10,11 @@ class SettingBody extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final _tileContents = [
-      _TileContent(
+      SettingTile(
+        text: 'テーマ設定',
+        onTap: () => ref.read(routerProvider).go('/setting/theme_setting'),
+      ),
+      SettingTile(
         text: 'ログアウト',
         onTap: () async {
           await showDialog(
@@ -30,11 +26,8 @@ class SettingBody extends HookConsumerWidget {
     ];
     return ListView.separated(
       itemCount: _tileContents.length,
-      separatorBuilder: (_, __) => const Divider(),
-      itemBuilder: (BuildContext context, int index) => SettingTile(
-        text: _tileContents[index].text,
-        onTap: _tileContents[index].onTap,
-      ),
+      separatorBuilder: (_, __) => const Divider(height: 1),
+      itemBuilder: (BuildContext context, int index) => _tileContents[index],
     );
   }
 }

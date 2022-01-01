@@ -6,8 +6,10 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:memo_sample/util/logger_util.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import 'app.dart';
+import 'infrastructure/repository/theme_mode_repository.dart';
 import 'util/firebase_options.dart';
 
 Future<void> main() async {
@@ -36,5 +38,13 @@ Future<void> main() async {
   // URLから#を除く
   GoRouter.setUrlPathStrategy(UrlPathStrategy.path);
 
-  runApp(const ProviderScope(child: App()));
+  final sharedPreferences = await SharedPreferences.getInstance();
+  runApp(
+    ProviderScope(
+      overrides: [
+        sharedPreferencesProvider.overrideWithValue(sharedPreferences),
+      ],
+      child: const App(),
+    ),
+  );
 }

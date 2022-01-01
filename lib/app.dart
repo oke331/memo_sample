@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutterfire_ui/i10n.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:memo_sample/presentation/controller/theme_mode_controller/theme_mode_controller.dart';
 import 'package:memo_sample/router.dart';
 
 import 'generated/l10n.dart';
@@ -30,9 +31,9 @@ class App extends HookConsumerWidget {
         FlutterFireUIJaLocalizationsDelegate(),
       ],
       supportedLocales: S.delegate.supportedLocales,
-      theme: ThemeData(
-        primarySwatch: Colors.green,
-      ),
+      theme: ThemeData.from(colorScheme: const ColorScheme.light()),
+      darkTheme: ThemeData.from(colorScheme: const ColorScheme.dark()),
+      themeMode: ref.watch(themeModeControllerProvider),
     );
   }
 }

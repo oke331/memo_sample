@@ -5,6 +5,7 @@ import 'package:memo_sample/presentation/controller/auth_controller/auth_control
 import 'package:memo_sample/presentation/page/memo_list_page/memo_list_page.dart';
 import 'package:memo_sample/presentation/page/setting_page/setting_page.dart';
 import 'package:memo_sample/presentation/page/sign_in_page/sign_in_page.dart';
+import 'package:memo_sample/presentation/page/theme_mode_page/theme_mode_page.dart';
 
 final rooterRefreshListenableProvider = Provider(
   (ref) => Listenable.merge(
@@ -24,6 +25,12 @@ final routerProvider = Provider(
           GoRoute(
             path: 'setting',
             builder: (context, state) => const SettingPage(),
+            routes: [
+              GoRoute(
+                path: 'theme_setting',
+                builder: (context, state) => const ThemeModePage(),
+              ),
+            ],
           ),
         ],
       ),
