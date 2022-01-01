@@ -9,22 +9,21 @@ class ThemeModeBody extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final currentTheme = ref.watch(themeModeControllerProvider);
     final controller = ref.watch(themeModeControllerProvider.notifier);
     final _tileContents = [
       ThemeModeTile(
         title: S.of(context).systemTheme,
-        selected: currentTheme == ThemeMode.system,
+        themeMode: ThemeMode.system,
         onTap: () => controller.updateThemeMode(ThemeMode.system),
       ),
       ThemeModeTile(
         title: S.of(context).on,
-        selected: currentTheme == ThemeMode.dark,
+        themeMode: ThemeMode.dark,
         onTap: () => controller.updateThemeMode(ThemeMode.dark),
       ),
       ThemeModeTile(
         title: S.of(context).off,
-        selected: currentTheme == ThemeMode.light,
+        themeMode: ThemeMode.light,
         onTap: () => controller.updateThemeMode(ThemeMode.light),
       ),
     ];
