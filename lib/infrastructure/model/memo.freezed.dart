@@ -23,11 +23,13 @@ class _$MemoTearOff {
   const _$MemoTearOff();
 
   _Memo call(
-      {String title = '',
+      {required String id,
+      String title = '',
       required String text,
       @TimestampConverter() required DateTime createdAt,
       @TimestampConverter() required DateTime updatedAt}) {
     return _Memo(
+      id: id,
       title: title,
       text: text,
       createdAt: createdAt,
@@ -45,6 +47,7 @@ const $Memo = _$MemoTearOff();
 
 /// @nodoc
 mixin _$Memo {
+  String get id => throw _privateConstructorUsedError;
   String get title => throw _privateConstructorUsedError;
   String get text => throw _privateConstructorUsedError;
   @TimestampConverter()
@@ -62,7 +65,8 @@ abstract class $MemoCopyWith<$Res> {
   factory $MemoCopyWith(Memo value, $Res Function(Memo) then) =
       _$MemoCopyWithImpl<$Res>;
   $Res call(
-      {String title,
+      {String id,
+      String title,
       String text,
       @TimestampConverter() DateTime createdAt,
       @TimestampConverter() DateTime updatedAt});
@@ -78,12 +82,17 @@ class _$MemoCopyWithImpl<$Res> implements $MemoCopyWith<$Res> {
 
   @override
   $Res call({
+    Object? id = freezed,
     Object? title = freezed,
     Object? text = freezed,
     Object? createdAt = freezed,
     Object? updatedAt = freezed,
   }) {
     return _then(_value.copyWith(
+      id: id == freezed
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
       title: title == freezed
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
@@ -110,7 +119,8 @@ abstract class _$MemoCopyWith<$Res> implements $MemoCopyWith<$Res> {
       __$MemoCopyWithImpl<$Res>;
   @override
   $Res call(
-      {String title,
+      {String id,
+      String title,
       String text,
       @TimestampConverter() DateTime createdAt,
       @TimestampConverter() DateTime updatedAt});
@@ -127,12 +137,17 @@ class __$MemoCopyWithImpl<$Res> extends _$MemoCopyWithImpl<$Res>
 
   @override
   $Res call({
+    Object? id = freezed,
     Object? title = freezed,
     Object? text = freezed,
     Object? createdAt = freezed,
     Object? updatedAt = freezed,
   }) {
     return _then(_Memo(
+      id: id == freezed
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
       title: title == freezed
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
@@ -157,13 +172,16 @@ class __$MemoCopyWithImpl<$Res> extends _$MemoCopyWithImpl<$Res>
 @JsonSerializable()
 class _$_Memo implements _Memo {
   const _$_Memo(
-      {this.title = '',
+      {required this.id,
+      this.title = '',
       required this.text,
       @TimestampConverter() required this.createdAt,
       @TimestampConverter() required this.updatedAt});
 
   factory _$_Memo.fromJson(Map<String, dynamic> json) => _$$_MemoFromJson(json);
 
+  @override
+  final String id;
   @JsonKey()
   @override
   final String title;
@@ -178,7 +196,7 @@ class _$_Memo implements _Memo {
 
   @override
   String toString() {
-    return 'Memo(title: $title, text: $text, createdAt: $createdAt, updatedAt: $updatedAt)';
+    return 'Memo(id: $id, title: $title, text: $text, createdAt: $createdAt, updatedAt: $updatedAt)';
   }
 
   @override
@@ -186,6 +204,7 @@ class _$_Memo implements _Memo {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _Memo &&
+            const DeepCollectionEquality().equals(other.id, id) &&
             const DeepCollectionEquality().equals(other.title, title) &&
             const DeepCollectionEquality().equals(other.text, text) &&
             const DeepCollectionEquality().equals(other.createdAt, createdAt) &&
@@ -195,6 +214,7 @@ class _$_Memo implements _Memo {
   @override
   int get hashCode => Object.hash(
       runtimeType,
+      const DeepCollectionEquality().hash(id),
       const DeepCollectionEquality().hash(title),
       const DeepCollectionEquality().hash(text),
       const DeepCollectionEquality().hash(createdAt),
@@ -213,13 +233,16 @@ class _$_Memo implements _Memo {
 
 abstract class _Memo implements Memo {
   const factory _Memo(
-      {String title,
+      {required String id,
+      String title,
       required String text,
       @TimestampConverter() required DateTime createdAt,
       @TimestampConverter() required DateTime updatedAt}) = _$_Memo;
 
   factory _Memo.fromJson(Map<String, dynamic> json) = _$_Memo.fromJson;
 
+  @override
+  String get id;
   @override
   String get title;
   @override

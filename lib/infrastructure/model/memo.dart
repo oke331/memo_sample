@@ -8,6 +8,7 @@ part 'memo.g.dart';
 @freezed
 class Memo with _$Memo {
   const factory Memo({
+    required String id,
     @Default('') String title,
     required String text,
     @TimestampConverter() required DateTime createdAt,
@@ -18,6 +19,14 @@ class Memo with _$Memo {
 
   factory Memo.fromDocumentSnapshot(DocumentSnapshot documentSnapshot) {
     final data = documentSnapshot.data()! as Map<String, dynamic>;
-    return Memo.fromJson(data);
+    return Memo.fromJson(data).copyWith(id: documentSnapshot.id);
   }
+}
+
+class MemoField {
+  static const id = 'id';
+  static const title = 'title';
+  static const text = 'text';
+  static const createdAt = 'createdAt';
+  static const updatedAt = 'updatedAt';
 }

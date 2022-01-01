@@ -7,6 +7,7 @@ part of 'memo.dart';
 // **************************************************************************
 
 _$_Memo _$$_MemoFromJson(Map<String, dynamic> json) => _$_Memo(
+      id: json['id'] as String,
       title: json['title'] as String? ?? '',
       text: json['text'] as String,
       createdAt: DateTime.parse(json['createdAt'] as String),
@@ -14,6 +15,7 @@ _$_Memo _$$_MemoFromJson(Map<String, dynamic> json) => _$_Memo(
     );
 
 Map<String, dynamic> _$$_MemoToJson(_$_Memo instance) => <String, dynamic>{
+      'id': instance.id,
       'title': instance.title,
       'text': instance.text,
       'createdAt': instance.createdAt.toIso8601String(),
