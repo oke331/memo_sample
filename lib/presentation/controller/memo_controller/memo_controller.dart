@@ -1,4 +1,5 @@
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:memo_sample/infrastructure/model/memo.dart';
 import 'package:memo_sample/infrastructure/repository/memo_repository.dart';
 import 'package:memo_sample/presentation/controller/auth_controller/auth_controller.dart';
 
@@ -8,7 +9,17 @@ final memoControllerProvider = Provider((ref) {
   return MemoController._(ref.read, user.value?.uid);
 });
 
-final memoExceptionProvider = StateProvider<Exception?>((_) => null);
+final memoControllerExceptionProvider = StateProvider<Exception?>((_) => null);
+
+final memoProvider =
+    FutureProvider.family.autoDispose<Memo, String>((ref, memoId) async {
+  final user =
+      ref.watch(authControllerProvider.select((value) => value.firebaseUser));
+  return ref.read(memoRepositoryProvider).fetchMemo(
+        userId: user.value!.uid,
+        memoId: memoId,
+      );
+});
 
 class MemoController {
   MemoController._(this._read, this._userId);
@@ -29,7 +40,7 @@ class MemoController {
         text: text,
       );
     } on Exception catch (e) {
-      _read(memoExceptionProvider.notifier).state = e;
+      _read(memoControllerExceptionProvider.notifier).state = e;
     }
   }
 
@@ -46,7 +57,7 @@ class MemoController {
         text: text,
       );
     } on Exception catch (e) {
-      _read(memoExceptionProvider.notifier).state = e;
+      _read(memoControllerExceptionProvider.notifier).state = e;
     }
   }
 
@@ -57,7 +68,7 @@ class MemoController {
         memoId: memoId,
       );
     } on Exception catch (e) {
-      _read(memoExceptionProvider.notifier).state = e;
+      _read(memoControllerExceptionProvider.notifier).state = e;
     }
   }
 }

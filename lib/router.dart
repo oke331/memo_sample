@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:memo_sample/presentation/controller/auth_controller/auth_controller.dart';
+import 'package:memo_sample/presentation/page/memo_edit_page/memo_edit_page.dart';
 import 'package:memo_sample/presentation/page/memo_list_page/memo_list_page.dart';
 import 'package:memo_sample/presentation/page/setting_page/setting_page.dart';
 import 'package:memo_sample/presentation/page/sign_in_page/sign_in_page.dart';
@@ -27,8 +28,26 @@ final routerProvider = Provider(
             builder: (context, state) => const SettingPage(),
             routes: [
               GoRoute(
-                path: 'theme_setting',
+                path: 'themeMode',
                 builder: (context, state) => const ThemeModePage(),
+              ),
+            ],
+          ),
+          GoRoute(
+            path: 'create',
+            builder: (context, state) => const MemoEditPage(),
+          ),
+          GoRoute(
+            path: ':memoId',
+            builder: (context, state) => MemoEditPage(
+              memoId: state.params['memoId'],
+            ),
+            routes: [
+              GoRoute(
+                path: 'edit',
+                builder: (context, state) => MemoEditPage(
+                  memoId: state.params['memoId'],
+                ),
               ),
             ],
           ),

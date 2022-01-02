@@ -131,10 +131,100 @@ class S {
   }
 
   /// `Would you like to delete?`
-  String get delete_comment {
+  String get deleteMessage {
     return Intl.message(
       'Would you like to delete?',
-      name: 'delete_comment',
+      name: 'deleteMessage',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Memo Detail`
+  String get memoDetailName {
+    return Intl.message(
+      'Memo Detail',
+      name: 'memoDetailName',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Created at`
+  String get createdAt {
+    return Intl.message(
+      'Created at',
+      name: 'createdAt',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Updated at`
+  String get updatedAt {
+    return Intl.message(
+      'Updated at',
+      name: 'updatedAt',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Edit`
+  String get edit {
+    return Intl.message(
+      'Edit',
+      name: 'edit',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Create Memo`
+  String get memoCreateName {
+    return Intl.message(
+      'Create Memo',
+      name: 'memoCreateName',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Edit Memo`
+  String get memoEditName {
+    return Intl.message(
+      'Edit Memo',
+      name: 'memoEditName',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Title`
+  String get title {
+    return Intl.message(
+      'Title',
+      name: 'title',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Text`
+  String get text {
+    return Intl.message(
+      'Text',
+      name: 'text',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Save`
+  String get save {
+    return Intl.message(
+      'Save',
+      name: 'save',
       desc: '',
       args: [],
     );
@@ -161,10 +251,10 @@ class S {
   }
 
   /// `Would you like to log out?`
-  String get logout_message {
+  String get logoutMessage {
     return Intl.message(
       'Would you like to log out?',
-      name: 'logout_message',
+      name: 'logoutMessage',
       desc: '',
       args: [],
     );

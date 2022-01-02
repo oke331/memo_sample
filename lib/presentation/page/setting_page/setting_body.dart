@@ -13,7 +13,7 @@ class SettingBody extends HookConsumerWidget {
     final _tileContents = [
       SettingTile(
         text: S.of(context).themeModeName,
-        onTap: () => ref.read(routerProvider).go('/setting/theme_setting'),
+        onTap: () => ref.read(routerProvider).go('/setting/themeMode'),
       ),
       SettingTile(
         text: S.of(context).logout,

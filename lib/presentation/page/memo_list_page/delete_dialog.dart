@@ -18,7 +18,7 @@ class DeleteDialog extends HookConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final router = ref.watch(routerProvider);
     return AlertDialog(
-      title: Text(S.of(context).delete_comment),
+      title: Text(S.of(context).deleteMessage),
       actions: [
         TextButton(
           onPressed: () => router.pop(context),

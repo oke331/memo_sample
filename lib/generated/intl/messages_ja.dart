@@ -24,20 +24,27 @@ class MessageLookup extends MessageLookupByLibrary {
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
         "appName": MessageLookupByLibrary.simpleMessage("メモサンプルアプリ"),
         "cancel": MessageLookupByLibrary.simpleMessage("キャンセル"),
+        "createdAt": MessageLookupByLibrary.simpleMessage("作成日時"),
         "darkTheme": MessageLookupByLibrary.simpleMessage("ダークテーマ"),
         "delete": MessageLookupByLibrary.simpleMessage("削除"),
-        "delete_comment": MessageLookupByLibrary.simpleMessage("削除しますか？"),
+        "edit": MessageLookupByLibrary.simpleMessage("編集"),
         "logout": MessageLookupByLibrary.simpleMessage("ログアウト"),
-        "logout_message": MessageLookupByLibrary.simpleMessage("ログアウトしますか？"),
+        "memoCreateName": MessageLookupByLibrary.simpleMessage("メモ作成"),
+        "memoDetailName": MessageLookupByLibrary.simpleMessage("メモ詳細"),
+        "memoEditName": MessageLookupByLibrary.simpleMessage("メモ編集"),
         "memoListName": MessageLookupByLibrary.simpleMessage("メモリスト"),
         "off": MessageLookupByLibrary.simpleMessage("オフ"),
         "on": MessageLookupByLibrary.simpleMessage("オン"),
         "registerDescription":
             MessageLookupByLibrary.simpleMessage("メモサンプルアプリにアカウントを登録しよう！"),
+        "save": MessageLookupByLibrary.simpleMessage("保存"),
         "settingName": MessageLookupByLibrary.simpleMessage("設定"),
         "signInDescription":
             MessageLookupByLibrary.simpleMessage("メモサンプルアプリにサインインしよう！"),
         "systemTheme": MessageLookupByLibrary.simpleMessage("システムテーマ"),
-        "themeModeName": MessageLookupByLibrary.simpleMessage("ダークテーマモード")
+        "text": MessageLookupByLibrary.simpleMessage("本文"),
+        "themeModeName": MessageLookupByLibrary.simpleMessage("ダークテーマモード"),
+        "title": MessageLookupByLibrary.simpleMessage("タイトル"),
+        "updatedAt": MessageLookupByLibrary.simpleMessage("更新日時")
       };
 }

@@ -25,22 +25,32 @@ class MessageLookup extends MessageLookupByLibrary {
         "appName":
             MessageLookupByLibrary.simpleMessage("Memo Sample Application"),
         "cancel": MessageLookupByLibrary.simpleMessage("cancel"),
+        "createdAt": MessageLookupByLibrary.simpleMessage("Created at"),
         "darkTheme": MessageLookupByLibrary.simpleMessage("Dark Theme"),
         "delete": MessageLookupByLibrary.simpleMessage("delete"),
-        "delete_comment":
+        "deleteMessage":
             MessageLookupByLibrary.simpleMessage("Would you like to delete?"),
+        "edit": MessageLookupByLibrary.simpleMessage("Edit"),
         "logout": MessageLookupByLibrary.simpleMessage("Logout"),
-        "logout_message":
+        "logoutMessage":
             MessageLookupByLibrary.simpleMessage("Would you like to log out?"),
+        "memoCreateName": MessageLookupByLibrary.simpleMessage("Create Memo"),
+        "memoDetailName": MessageLookupByLibrary.simpleMessage("Memo Detail"),
+        "memoEditName": MessageLookupByLibrary.simpleMessage("Edit Memo"),
         "memoListName": MessageLookupByLibrary.simpleMessage("Memo list"),
         "off": MessageLookupByLibrary.simpleMessage("OFF"),
         "on": MessageLookupByLibrary.simpleMessage("ON"),
         "registerDescription": MessageLookupByLibrary.simpleMessage(
             "Welcome to Memo Sample Application! Please create an account to continue."),
+        "save": MessageLookupByLibrary.simpleMessage("Save"),
         "settingName": MessageLookupByLibrary.simpleMessage("Setting"),
         "signInDescription": MessageLookupByLibrary.simpleMessage(
             "Welcome to Memo Sample Application! Please sign in to continue."),
         "systemTheme": MessageLookupByLibrary.simpleMessage("System Theme"),
-        "themeModeName": MessageLookupByLibrary.simpleMessage("Dart Theme Mode")
+        "text": MessageLookupByLibrary.simpleMessage("Text"),
+        "themeModeName":
+            MessageLookupByLibrary.simpleMessage("Dart Theme Mode"),
+        "title": MessageLookupByLibrary.simpleMessage("Title"),
+        "updatedAt": MessageLookupByLibrary.simpleMessage("Updated at")
       };
 }

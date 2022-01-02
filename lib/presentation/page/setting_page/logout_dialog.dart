@@ -11,7 +11,7 @@ class LogoutDialog extends HookConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final router = ref.watch(routerProvider);
     return AlertDialog(
-      title: Text(S.of(context).logout_message),
+      title: Text(S.of(context).logoutMessage),
       actions: [
         TextButton(
           onPressed: () => router.pop(context),

@@ -13,6 +13,14 @@ class MemoRepository {
 
   FirebaseFirestore get _firebaseFirestore => _read(firebaseFirestoreProvider);
 
+  Future<Memo> fetchMemo({
+    required String userId,
+    required String memoId,
+  }) async {
+    final result = await _firebaseFirestore.memosRef(userId).doc(memoId).get();
+    return Memo.fromDocumentSnapshot(result);
+  }
+
   Future<void> add({
     required String userId,
     required String title,
