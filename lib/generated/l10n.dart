@@ -80,6 +80,16 @@ class S {
     );
   }
 
+  /// `The acquisition process failed. Please try again.`
+  String get failedToFetch {
+    return Intl.message(
+      'The acquisition process failed. Please try again.',
+      name: 'failedToFetch',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Memo Sample Application`
   String get appName {
     return Intl.message(

@@ -31,6 +31,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "deleteMessage":
             MessageLookupByLibrary.simpleMessage("Would you like to delete?"),
         "edit": MessageLookupByLibrary.simpleMessage("Edit"),
+        "failedToFetch": MessageLookupByLibrary.simpleMessage(
+            "The acquisition process failed. Please try again."),
         "logout": MessageLookupByLibrary.simpleMessage("Logout"),
         "logoutMessage":
             MessageLookupByLibrary.simpleMessage("Would you like to log out?"),

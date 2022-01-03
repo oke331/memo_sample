@@ -3,6 +3,7 @@
   "cancel": "cancel",
   "on": "ON",
   "off": "OFF",
+  "failedToFetch": "The acquisition process failed. Please try again.",
   "@_SIGN_IN_PAGE": {},
   "appName": "Memo Sample Application",
   "signInDescription": "Welcome to Memo Sample Application! Please sign in to continue.",
