@@ -39,7 +39,7 @@ final routerProvider = Provider(
             builder: (context, state) => MemoEditPage(),
           ),
           GoRoute(
-            path: ':memoId',
+            path: 'detail/:memoId',
             builder: (context, state) => MemoDetailPage(
               memoId: state.params['memoId']!,
             ),

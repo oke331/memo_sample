@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:memo_sample/generated/l10n.dart';
+import 'package:memo_sample/presentation/page/memo_list_page/memo_list_body.dart';
 import 'package:memo_sample/router.dart';
 
-class MemoListPage extends ConsumerWidget {
+class MemoListPage extends HookConsumerWidget {
   const MemoListPage({Key? key}) : super(key: key);
 
   @override
@@ -17,6 +18,11 @@ class MemoListPage extends ConsumerWidget {
             onPressed: () => ref.read(routerProvider).go('/setting'),
           )
         ],
+      ),
+      body: const MemoListBody(),
+      floatingActionButton: FloatingActionButton(
+        child: const Icon(Icons.add),
+        onPressed: () => ref.read(routerProvider).go('/create'),
       ),
     );
   }
