@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:memo_sample/presentation/controller/auth_controller/auth_controller.dart';
+import 'package:memo_sample/presentation/page/memo_detail_page/memo_detail_page.dart';
 import 'package:memo_sample/presentation/page/memo_edit_page/memo_edit_page.dart';
 import 'package:memo_sample/presentation/page/memo_list_page/memo_list_page.dart';
 import 'package:memo_sample/presentation/page/setting_page/setting_page.dart';
@@ -35,12 +36,12 @@ final routerProvider = Provider(
           ),
           GoRoute(
             path: 'create',
-            builder: (context, state) => const MemoEditPage(),
+            builder: (context, state) => MemoEditPage(),
           ),
           GoRoute(
             path: ':memoId',
-            builder: (context, state) => MemoEditPage(
-              memoId: state.params['memoId'],
+            builder: (context, state) => MemoDetailPage(
+              memoId: state.params['memoId']!,
             ),
             routes: [
               GoRoute(

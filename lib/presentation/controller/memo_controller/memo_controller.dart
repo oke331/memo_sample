@@ -12,7 +12,11 @@ final memoControllerProvider = Provider((ref) {
 final memoControllerExceptionProvider = StateProvider<Exception?>((_) => null);
 
 final memoProvider =
-    FutureProvider.family.autoDispose<Memo, String>((ref, memoId) async {
+    FutureProvider.family.autoDispose<Memo?, String?>((ref, memoId) async {
+  if (memoId == null) {
+    return null;
+  }
+
   final user =
       ref.watch(authControllerProvider.select((value) => value.firebaseUser));
   return ref.read(memoRepositoryProvider).fetchMemo(
@@ -39,6 +43,7 @@ class MemoController {
         title: title,
         text: text,
       );
+      _read(memoControllerExceptionProvider.notifier).state = null;
     } on Exception catch (e) {
       _read(memoControllerExceptionProvider.notifier).state = e;
     }
@@ -56,6 +61,7 @@ class MemoController {
         title: title,
         text: text,
       );
+      _read(memoControllerExceptionProvider.notifier).state = null;
     } on Exception catch (e) {
       _read(memoControllerExceptionProvider.notifier).state = e;
     }
@@ -67,6 +73,7 @@ class MemoController {
         userId: _userId!,
         memoId: memoId,
       );
+      _read(memoControllerExceptionProvider.notifier).state = null;
     } on Exception catch (e) {
       _read(memoControllerExceptionProvider.notifier).state = e;
     }
