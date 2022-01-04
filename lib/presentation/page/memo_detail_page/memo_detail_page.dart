@@ -10,7 +10,7 @@ import 'package:memo_sample/router.dart';
 final memoDetailPageProvider =
     Provider<Memo>((ref) => throw UnimplementedError());
 
-class MemoDetailPage extends ConsumerWidget {
+class MemoDetailPage extends HookConsumerWidget {
   const MemoDetailPage({
     Key? key,
     required this.memoId,

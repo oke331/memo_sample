@@ -14,7 +14,7 @@ final memoEditPageTitleControllerProvider =
 final memoEditPageTextControllerProvider =
     Provider<TextEditingController>((ref) => throw UnimplementedError());
 
-class MemoEditPage extends ConsumerWidget {
+class MemoEditPage extends HookConsumerWidget {
   MemoEditPage({
     Key? key,
     this.memoId,
@@ -109,7 +109,9 @@ class MemoEditPage extends ConsumerWidget {
     final context = useContext();
     return Scaffold(
       appBar: AppBar(
-        title: Text(S.of(context).memoEditName),
+        title: Text(memoId == null
+            ? S.of(context).memoCreateName
+            : S.of(context).memoEditName),
         actions: appBarActions,
       ),
       body: body,
