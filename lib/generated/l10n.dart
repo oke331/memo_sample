@@ -90,6 +90,16 @@ class S {
     );
   }
 
+  /// `No data.`
+  String get empty {
+    return Intl.message(
+      'No data.',
+      name: 'empty',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Memo Sample Application`
   String get appName {
     return Intl.message(

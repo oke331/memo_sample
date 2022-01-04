@@ -28,6 +28,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "darkTheme": MessageLookupByLibrary.simpleMessage("ダークテーマ"),
         "delete": MessageLookupByLibrary.simpleMessage("削除"),
         "edit": MessageLookupByLibrary.simpleMessage("編集"),
+        "empty": MessageLookupByLibrary.simpleMessage("データはありません。"),
         "failedToFetch":
             MessageLookupByLibrary.simpleMessage("取得処理に失敗しました。再取得をお願いします！"),
         "logout": MessageLookupByLibrary.simpleMessage("ログアウト"),
