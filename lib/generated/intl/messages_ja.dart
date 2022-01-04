@@ -32,6 +32,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "failedToFetch":
             MessageLookupByLibrary.simpleMessage("取得処理に失敗しました。再取得をお願いします！"),
         "logout": MessageLookupByLibrary.simpleMessage("ログアウト"),
+        "logoutMessage": MessageLookupByLibrary.simpleMessage("ログアウトしますか？"),
         "memoCreateName": MessageLookupByLibrary.simpleMessage("メモ作成"),
         "memoDetailName": MessageLookupByLibrary.simpleMessage("メモ詳細"),
         "memoEditName": MessageLookupByLibrary.simpleMessage("メモ編集"),
