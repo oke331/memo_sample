@@ -27,6 +27,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "createdAt": MessageLookupByLibrary.simpleMessage("作成日時"),
         "darkTheme": MessageLookupByLibrary.simpleMessage("ダークテーマ"),
         "delete": MessageLookupByLibrary.simpleMessage("削除"),
+        "deleteMessage": MessageLookupByLibrary.simpleMessage("削除しますか？"),
         "edit": MessageLookupByLibrary.simpleMessage("編集"),
         "empty": MessageLookupByLibrary.simpleMessage("データはありません。"),
         "failedToFetch":
@@ -42,6 +43,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "registerDescription":
             MessageLookupByLibrary.simpleMessage("メモサンプルアプリにアカウントを登録しよう！"),
         "save": MessageLookupByLibrary.simpleMessage("保存"),
+        "saveMessage": MessageLookupByLibrary.simpleMessage("保存しました！"),
         "settingName": MessageLookupByLibrary.simpleMessage("設定"),
         "signInDescription":
             MessageLookupByLibrary.simpleMessage("メモサンプルアプリにサインインしよう！"),

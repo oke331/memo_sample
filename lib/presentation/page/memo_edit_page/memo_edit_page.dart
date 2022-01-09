@@ -37,48 +37,57 @@ class MemoEditPage extends HookConsumerWidget {
                 useTextEditingController(text: memo?.text),
               ),
             ],
-            child: Form(
-              key: _formKey,
-              child: _scaffold(
-                body: const MemoEditBody(),
-                appBarActions: [
-                  TextButton(
-                    onPressed: () {
-                      if (!_formKey.currentState!.validate()) {
-                        return;
-                      }
-                      final controller =
-                          ref.read(memoEditPageTitleControllerProvider);
-                      final title = controller.text;
-                      final text = controller.text;
-                      final memoId = this.memoId;
-                      if (memoId == null) {
-                        ref.read(memoControllerProvider).add(
-                              title: title,
-                              text: text,
-                            );
-                      } else {
-                        ref.read(memoControllerProvider).update(
-                              memoId: memoId,
-                              title: title,
-                              text: text,
-                            );
-                      }
+            child: Consumer(
+              builder: (context, ref, child) => Form(
+                key: _formKey,
+                child: _scaffold(
+                  context: context,
+                  body: const MemoEditBody(),
+                  appBarActions: [
+                    TextButton(
+                      onPressed: () {
+                        if (!_formKey.currentState!.validate()) {
+                          return;
+                        }
+                        final controller =
+                            ref.read(memoEditPageTitleControllerProvider);
+                        final title = controller.text;
+                        final text = controller.text;
+                        final memoId = this.memoId;
+                        if (memoId == null) {
+                          ref.read(memoControllerProvider).add(
+                                title: title,
+                                text: text,
+                              );
+                        } else {
+                          ref.read(memoControllerProvider).update(
+                                memoId: memoId,
+                                title: title,
+                                text: text,
+                              );
+                        }
 
-                      if (ref
-                              .read(memoControllerExceptionProvider.notifier)
-                              .state ==
-                          null) {
-                        ref.read(routerProvider).pop(context);
-                      }
-                    },
-                    child: Text(S.of(context).save),
-                  ),
-                ],
+                        if (ref
+                                .read(memoControllerExceptionProvider.notifier)
+                                .state !=
+                            null) {
+                          return;
+                        }
+
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          SnackBar(content: Text(S.of(context).saveMessage)),
+                        );
+                        ref.read(routerProvider).go('/detail/$memoId');
+                      },
+                      child: Text(S.of(context).save),
+                    ),
+                  ],
+                ),
               ),
             ),
           ),
           error: (error, stackTrace) => _scaffold(
+            context: context,
             body: RetryToFetchWidget(
               text:
                   '${S.of(context).failedToFetch} \nError:${error.toString()}',
@@ -86,6 +95,7 @@ class MemoEditPage extends HookConsumerWidget {
             ),
           ),
           loading: () => _scaffold(
+            context: context,
             body: const Center(
               child: CircularProgressIndicator(),
             ),
@@ -104,9 +114,9 @@ class MemoEditPage extends HookConsumerWidget {
 
   Widget _scaffold({
     required Widget body,
+    required BuildContext context,
     List<Widget>? appBarActions,
   }) {
-    final context = useContext();
     return Scaffold(
       appBar: AppBar(
         title: Text(memoId == null

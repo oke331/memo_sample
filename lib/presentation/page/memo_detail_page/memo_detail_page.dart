@@ -21,17 +21,23 @@ class MemoDetailPage extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return ref.watch(memoProvider(memoId)).when(
-          data: (memo) => Scaffold(
-            appBar: AppBar(
-              title: Text(S.of(context).memoDetailName),
-              actions: [
-                TextButton(
-                  onPressed: () => ref.read(routerProvider).go('/$memoId/edit'),
-                  child: Text(S.of(context).edit),
-                ),
-              ],
+          data: (memo) => ProviderScope(
+            overrides: [
+              memoDetailPageProvider.overrideWithValue(memo!),
+            ],
+            child: Scaffold(
+              appBar: AppBar(
+                title: Text(S.of(context).memoDetailName),
+                actions: [
+                  TextButton(
+                    onPressed: () =>
+                        ref.read(routerProvider).go('/edit/$memoId'),
+                    child: Text(S.of(context).edit),
+                  ),
+                ],
+              ),
+              body: const MemoDetailBody(),
             ),
-            body: const MemoDetailBody(),
           ),
           error: (error, stackTrace) => RetryToFetchWidget(
             text: '${S.of(context).failedToFetch} \nError:${error.toString()}',

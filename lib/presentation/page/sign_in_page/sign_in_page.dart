@@ -39,14 +39,16 @@ class SingInPage extends StatelessWidget {
                   Icons.my_library_books,
                   size: 100,
                   color: Colors.blue,
-                )
+                ),
               ],
-            )
+            ),
           ],
         );
       },
       providerConfigs: const [
-        GoogleProviderConfiguration(clientId: '390695659143'),
+        GoogleProviderConfiguration(
+          clientId: '1:390695659143:android:62c6ab0d9fa6453e3cfa22',
+        ),
         AppleProviderConfiguration(),
         EmailProviderConfiguration(),
       ],

@@ -24,6 +24,7 @@
   "title": "Title",
   "text": "Text",
   "save": "Save",
+  "saveMessage": "Save succeeded!",
   "@_SETTING_PAGE": {},
   "settingName": "Setting",
   "logout": "Logout",

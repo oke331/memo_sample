@@ -13,6 +13,7 @@ class EditTitleSection extends HookConsumerWidget {
       child: TextFormField(
         controller: controller,
         decoration: InputDecoration(
+          border: InputBorder.none,
           hintText: S.of(context).title,
         ),
       ),

@@ -14,6 +14,7 @@ class EditTextSection extends HookConsumerWidget {
         controller: controller,
         maxLines: null,
         decoration: InputDecoration(
+          border: InputBorder.none,
           hintText: S.of(context).text,
         ),
       ),

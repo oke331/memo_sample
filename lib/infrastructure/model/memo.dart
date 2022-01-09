@@ -19,7 +19,10 @@ class Memo with _$Memo {
 
   factory Memo.fromDocumentSnapshot(DocumentSnapshot documentSnapshot) {
     final data = documentSnapshot.data()! as Map<String, dynamic>;
-    return Memo.fromJson(data).copyWith(id: documentSnapshot.id);
+    return Memo.fromJson({
+      MemoField.id: documentSnapshot.id,
+      ...data,
+    });
   }
 }
 

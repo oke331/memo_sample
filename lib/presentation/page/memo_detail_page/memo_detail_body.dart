@@ -14,6 +14,7 @@ class MemoDetailBody extends HookConsumerWidget {
     return SafeArea(
       child: SingleChildScrollView(
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             if (title.isNotEmpty) ...[
               const MemoDetailTitleSection(),

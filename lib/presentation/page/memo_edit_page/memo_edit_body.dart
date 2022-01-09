@@ -8,14 +8,16 @@ class MemoEditBody extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    return SingleChildScrollView(
-      child: SafeArea(
-        child: Column(
-          children: const [
-            EditTitleSection(),
-            Divider(height: 1),
-            EditTextSection(),
-          ],
+    return Scrollbar(
+      child: SingleChildScrollView(
+        child: SafeArea(
+          child: Column(
+            children: const [
+              EditTitleSection(),
+              Divider(height: 1),
+              EditTextSection(),
+            ],
+          ),
         ),
       ),
     );

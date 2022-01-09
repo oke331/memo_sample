@@ -250,6 +250,16 @@ class S {
     );
   }
 
+  /// `Save succeeded!`
+  String get saveMessage {
+    return Intl.message(
+      'Save succeeded!',
+      name: 'saveMessage',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Setting`
   String get settingName {
     return Intl.message(

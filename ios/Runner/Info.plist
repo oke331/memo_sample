@@ -53,5 +53,16 @@
    	<string>en</string>
     <string>ja</string>
 	</array>
+    <key>CFBundleURLTypes</key>
+    <array>
+        <dict>
+            <key>CFBundleTypeRole</key>
+            <string>Editor</string>
+            <key>CFBundleURLSchemes</key>
+            <array>
+                <string>com.googleusercontent.apps.390695659143-ktv6q55llipea7f90ivan3s95l2n0hgf</string>
+            </array>
+        </dict>
+    </array>
 </dict>
 </plist>

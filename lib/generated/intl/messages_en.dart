@@ -46,6 +46,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "registerDescription": MessageLookupByLibrary.simpleMessage(
             "Welcome to Memo Sample Application! Please create an account to continue."),
         "save": MessageLookupByLibrary.simpleMessage("Save"),
+        "saveMessage": MessageLookupByLibrary.simpleMessage("Save succeeded!"),
         "settingName": MessageLookupByLibrary.simpleMessage("Setting"),
         "signInDescription": MessageLookupByLibrary.simpleMessage(
             "Welcome to Memo Sample Application! Please sign in to continue."),
