@@ -14,7 +14,7 @@ class MemoListTile extends HookConsumerWidget {
     final memo = ref.watch(currentMemo);
     final router = ref.watch(routerProvider);
     return ListTile(
-      onTap: () => ref.read(routerProvider).go('/detail/${memo.id}'),
+      onTap: () => router.go('/detail/${memo.id}'),
       title: Text(
         memo.title.isNotEmpty ? memo.title : memo.text,
         overflow: TextOverflow.ellipsis,

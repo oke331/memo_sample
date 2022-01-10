@@ -9,20 +9,21 @@ class MemoListPage extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final router = ref.watch(routerProvider);
     return Scaffold(
       appBar: AppBar(
         title: Text(S.of(context).memoListName),
         actions: [
           IconButton(
             icon: const Icon(Icons.settings),
-            onPressed: () => ref.read(routerProvider).go('/setting'),
+            onPressed: () => router.go('/setting'),
           )
         ],
       ),
       body: const MemoListBody(),
       floatingActionButton: FloatingActionButton(
         child: const Icon(Icons.add),
-        onPressed: () => ref.read(routerProvider).go('/create'),
+        onPressed: () => router.go('/create'),
       ),
     );
   }

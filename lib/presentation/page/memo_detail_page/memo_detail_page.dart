@@ -20,6 +20,7 @@ class MemoDetailPage extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final router = ref.watch(routerProvider);
     return ref.watch(memoProvider(memoId)).when(
           data: (memo) => ProviderScope(
             overrides: [
@@ -29,8 +30,7 @@ class MemoDetailPage extends HookConsumerWidget {
               context: context,
               appBarActions: [
                 IconButton(
-                  onPressed: () =>
-                      ref.read(routerProvider).go('/detail/$memoId/edit'),
+                  onPressed: () => router.go('/detail/$memoId/edit'),
                   icon: const Icon(Icons.edit),
                 ),
               ],
