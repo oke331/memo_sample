@@ -26,6 +26,7 @@ class MemoDetailPage extends HookConsumerWidget {
         body: const SizedBox.shrink(),
       );
     }
+    final router = ref.watch(routerProvider);
     return ProviderScope(
       overrides: [
         memoDetailPageProvider.overrideWithValue(memo),
@@ -33,8 +34,7 @@ class MemoDetailPage extends HookConsumerWidget {
       child: _scaffold(
         appBarActions: [
           IconButton(
-            onPressed: () =>
-                ref.read(routerProvider).go('/detail/$memoId/edit'),
+            onPressed: () => router.go('/detail/$memoId/edit'),
             icon: const Icon(Icons.edit),
           ),
         ],

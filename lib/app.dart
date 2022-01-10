@@ -12,12 +12,12 @@ class App extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final router = ref.watch(routerProvider);
     ref.listen(
       rooterRefreshListenableProvider,
-      (_, __) => ref.read(routerProvider).refresh(),
+      (_, __) => router.refresh(),
     );
 
-    final router = ref.watch(routerProvider);
     return MaterialApp.router(
       routeInformationParser: router.routeInformationParser,
       routerDelegate: router.routerDelegate,

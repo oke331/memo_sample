@@ -6,7 +6,6 @@ import 'package:memo_sample/infrastructure/model/memo.dart';
 import 'package:memo_sample/presentation/controller/memo_controller/memo_controller.dart';
 import 'package:memo_sample/presentation/page/memo_edit_page/memo_edit_body.dart';
 import 'package:memo_sample/presentation/page/util/modal_progress_indicator.dart';
-import 'package:memo_sample/presentation/page/util/retry_to_fetch_widget.dart';
 import 'package:memo_sample/router.dart';
 
 final memoEditPageProvider = Provider<Memo?>((ref) => null);

@@ -11,10 +11,11 @@ class SettingBody extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final router = ref.watch(routerProvider);
     final _tileContents = [
       SettingTile(
         text: S.of(context).themeModeName,
-        onTap: () => ref.read(routerProvider).go('/setting/themeMode'),
+        onTap: () => router.go('/setting/themeMode'),
       ),
       SettingTile(
         text: S.of(context).license,
