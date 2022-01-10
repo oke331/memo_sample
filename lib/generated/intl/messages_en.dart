@@ -30,6 +30,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "delete": MessageLookupByLibrary.simpleMessage("delete"),
         "deleteMessage":
             MessageLookupByLibrary.simpleMessage("Would you like to delete?"),
+        "deleteSuccessfully":
+            MessageLookupByLibrary.simpleMessage("Delete Successfully."),
         "edit": MessageLookupByLibrary.simpleMessage("Edit"),
         "empty": MessageLookupByLibrary.simpleMessage("No data."),
         "failedToFetch": MessageLookupByLibrary.simpleMessage(
@@ -39,6 +41,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "logout": MessageLookupByLibrary.simpleMessage("Logout"),
         "logoutMessage":
             MessageLookupByLibrary.simpleMessage("Would you like to log out?"),
+        "logoutSuccessfully":
+            MessageLookupByLibrary.simpleMessage("Logout Successfully."),
         "memoCreateName": MessageLookupByLibrary.simpleMessage("Create Memo"),
         "memoDetailName": MessageLookupByLibrary.simpleMessage("Memo Detail"),
         "memoEditName": MessageLookupByLibrary.simpleMessage("Edit Memo"),
@@ -49,7 +53,8 @@ class MessageLookup extends MessageLookupByLibrary {
             "Welcome to Memo Sample Application! Please create an account to continue."),
         "required": MessageLookupByLibrary.simpleMessage("Required"),
         "save": MessageLookupByLibrary.simpleMessage("Save"),
-        "saveMessage": MessageLookupByLibrary.simpleMessage("Save succeeded!"),
+        "saveSuccessfully":
+            MessageLookupByLibrary.simpleMessage("Save Successfully!"),
         "settingName": MessageLookupByLibrary.simpleMessage("Setting"),
         "signInDescription": MessageLookupByLibrary.simpleMessage(
             "Welcome to Memo Sample Application! Please sign in to continue."),

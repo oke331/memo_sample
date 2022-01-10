@@ -25,15 +25,6 @@ class MemoEditPage extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    ref.listen<Exception?>(
-      memoControllerExceptionProvider,
-      (previous, next) => showSnackBar(
-        previous: previous,
-        next: next,
-        context: context,
-      ),
-    );
-
     return ref.watch(memoProvider(memoId)).when(
           data: (memo) => ProviderScope(
             overrides: [
@@ -118,27 +109,18 @@ class MemoEditPage extends HookConsumerWidget {
           );
     }
 
-    if (ref.read(memoControllerExceptionProvider.notifier).state != null) {
+    final exception = ref.read(memoControllerExceptionProvider.notifier).state;
+    if (exception != null) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text(exception.toString())),
+      );
       return;
     }
 
     ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(content: Text(S.of(context).saveMessage)),
+      SnackBar(content: Text(S.of(context).saveSuccessfully)),
     );
     ref.read(routerProvider).go('/detail/$memoId');
-  }
-
-  void showSnackBar({
-    required Exception? previous,
-    required Exception? next,
-    required BuildContext context,
-  }) {
-    if (next == null) {
-      return;
-    }
-    ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(content: Text(next.toString())),
-    );
   }
 
   Widget _scaffold({

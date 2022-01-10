@@ -28,6 +28,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "darkTheme": MessageLookupByLibrary.simpleMessage("ダークテーマ"),
         "delete": MessageLookupByLibrary.simpleMessage("削除"),
         "deleteMessage": MessageLookupByLibrary.simpleMessage("削除しますか？"),
+        "deleteSuccessfully": MessageLookupByLibrary.simpleMessage("削除しました！"),
         "edit": MessageLookupByLibrary.simpleMessage("編集"),
         "empty": MessageLookupByLibrary.simpleMessage("データはありません。"),
         "failedToFetch":
@@ -35,6 +36,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "inputError": MessageLookupByLibrary.simpleMessage("入力項目に誤りがあります。"),
         "logout": MessageLookupByLibrary.simpleMessage("ログアウト"),
         "logoutMessage": MessageLookupByLibrary.simpleMessage("ログアウトしますか？"),
+        "logoutSuccessfully":
+            MessageLookupByLibrary.simpleMessage("ログアウトしました！"),
         "memoCreateName": MessageLookupByLibrary.simpleMessage("メモ作成"),
         "memoDetailName": MessageLookupByLibrary.simpleMessage("メモ詳細"),
         "memoEditName": MessageLookupByLibrary.simpleMessage("メモ編集"),
@@ -45,7 +48,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("メモサンプルアプリにアカウントを登録しよう！"),
         "required": MessageLookupByLibrary.simpleMessage("必須入力です"),
         "save": MessageLookupByLibrary.simpleMessage("保存"),
-        "saveMessage": MessageLookupByLibrary.simpleMessage("保存しました！"),
+        "saveSuccessfully": MessageLookupByLibrary.simpleMessage("保存しました！"),
         "settingName": MessageLookupByLibrary.simpleMessage("設定"),
         "signInDescription":
             MessageLookupByLibrary.simpleMessage("メモサンプルアプリにサインインしよう！"),

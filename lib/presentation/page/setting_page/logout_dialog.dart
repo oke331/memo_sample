@@ -14,13 +14,21 @@ class LogoutDialog extends HookConsumerWidget {
       title: Text(S.of(context).logoutMessage),
       actions: [
         TextButton(
-          onPressed: () => router.pop(),
-          child: Text(S.of(context).cancel),
+          onPressed: () => Navigator.pop(context),
+          child: Text(
+            S.of(context).cancel,
+            style: TextStyle(
+              color: Theme.of(context).colorScheme.onBackground,
+            ),
+          ),
         ),
         TextButton(
           onPressed: () {
-            router.go('/sign_in');
             ref.read(authControllerProvider.notifier).signOut();
+            router.go('/sign_in');
+            ScaffoldMessenger.of(context).showSnackBar(
+              SnackBar(content: Text(S.of(context).logoutSuccessfully)),
+            );
           },
           child: Text(S.of(context).logout),
         )

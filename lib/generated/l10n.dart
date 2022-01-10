@@ -160,6 +160,16 @@ class S {
     );
   }
 
+  /// `Delete Successfully.`
+  String get deleteSuccessfully {
+    return Intl.message(
+      'Delete Successfully.',
+      name: 'deleteSuccessfully',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Memo Detail`
   String get memoDetailName {
     return Intl.message(
@@ -250,11 +260,11 @@ class S {
     );
   }
 
-  /// `Save succeeded!`
-  String get saveMessage {
+  /// `Save Successfully!`
+  String get saveSuccessfully {
     return Intl.message(
-      'Save succeeded!',
-      name: 'saveMessage',
+      'Save Successfully!',
+      name: 'saveSuccessfully',
       desc: '',
       args: [],
     );
@@ -305,6 +315,16 @@ class S {
     return Intl.message(
       'Would you like to log out?',
       name: 'logoutMessage',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Logout Successfully.`
+  String get logoutSuccessfully {
+    return Intl.message(
+      'Logout Successfully.',
+      name: 'logoutSuccessfully',
       desc: '',
       args: [],
     );

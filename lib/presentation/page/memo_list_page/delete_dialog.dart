@@ -21,22 +21,30 @@ class DeleteDialog extends HookConsumerWidget {
       title: Text(S.of(context).deleteMessage),
       actions: [
         TextButton(
-          onPressed: () => router.pop(),
+          onPressed: () => Navigator.pop(context),
           child: Text(
             S.of(context).cancel,
             style: TextStyle(
-              color: Theme.of(context).colorScheme.onPrimary,
+              color: Theme.of(context).colorScheme.onBackground,
             ),
           ),
         ),
         TextButton(
           onPressed: () {
             ref.read(memoControllerProvider).delete(memoId: memoId);
-            if (ref.read(memoControllerExceptionProvider.notifier).state !=
-                null) {
+            final exception =
+                ref.read(memoControllerExceptionProvider.notifier).state;
+            if (exception != null) {
+              ScaffoldMessenger.of(context).showSnackBar(
+                SnackBar(content: Text(exception.toString())),
+              );
               return;
             }
-            router.pop();
+
+            ScaffoldMessenger.of(context).showSnackBar(
+              SnackBar(content: Text(S.of(context).deleteSuccessfully)),
+            );
+            Navigator.pop(context);
           },
           child: Text(
             S.of(context).delete,
