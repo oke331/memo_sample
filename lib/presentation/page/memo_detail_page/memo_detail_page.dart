@@ -23,7 +23,7 @@ class MemoDetailPage extends HookConsumerWidget {
     final memo = ref.watch(memoProvider(memoId));
     if (memo == null) {
       return _scaffold(
-        body: Center(child: Text(S.of(context).empty)),
+        body: const SizedBox.shrink(),
       );
     }
     return ProviderScope(
