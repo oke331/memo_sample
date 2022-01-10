@@ -36,8 +36,10 @@ class MessageLookup extends MessageLookupByLibrary {
         "empty": MessageLookupByLibrary.simpleMessage("No data."),
         "failedToFetch": MessageLookupByLibrary.simpleMessage(
             "The acquisition process failed. Please tap and retry again."),
+        "github": MessageLookupByLibrary.simpleMessage("GitHub Repository"),
         "inputError": MessageLookupByLibrary.simpleMessage(
             "There is an error in the input content."),
+        "license": MessageLookupByLibrary.simpleMessage("License"),
         "logout": MessageLookupByLibrary.simpleMessage("Logout"),
         "logoutMessage":
             MessageLookupByLibrary.simpleMessage("Would you like to log out?"),

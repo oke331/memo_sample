@@ -4,6 +4,7 @@ import 'package:memo_sample/generated/l10n.dart';
 import 'package:memo_sample/presentation/page/setting_page/logout_dialog.dart';
 import 'package:memo_sample/presentation/page/setting_page/setting_tile.dart';
 import 'package:memo_sample/router.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class SettingBody extends HookConsumerWidget {
   const SettingBody({Key? key}) : super(key: key);
@@ -14,6 +15,14 @@ class SettingBody extends HookConsumerWidget {
       SettingTile(
         text: S.of(context).themeModeName,
         onTap: () => ref.read(routerProvider).go('/setting/themeMode'),
+      ),
+      SettingTile(
+        text: S.of(context).license,
+        onTap: () => showLicensePage(context: context),
+      ),
+      SettingTile(
+        text: S.of(context).github,
+        onTap: () async => launch('https://github.com/oke331/memo_sample'),
       ),
       SettingTile(
         text: S.of(context).logout,

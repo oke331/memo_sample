@@ -33,7 +33,9 @@ class MessageLookup extends MessageLookupByLibrary {
         "empty": MessageLookupByLibrary.simpleMessage("データはありません。"),
         "failedToFetch": MessageLookupByLibrary.simpleMessage(
             "取得処理に失敗しました。タップして再取得をお願いします！"),
+        "github": MessageLookupByLibrary.simpleMessage("GitHubリポジトリへGo!!"),
         "inputError": MessageLookupByLibrary.simpleMessage("入力項目に誤りがあります。"),
+        "license": MessageLookupByLibrary.simpleMessage("ライセンス情報"),
         "logout": MessageLookupByLibrary.simpleMessage("ログアウト"),
         "logoutMessage": MessageLookupByLibrary.simpleMessage("ログアウトしますか？"),
         "logoutSuccessfully":

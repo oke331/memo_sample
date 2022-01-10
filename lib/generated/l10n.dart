@@ -330,6 +330,26 @@ class S {
     );
   }
 
+  /// `GitHub Repository`
+  String get github {
+    return Intl.message(
+      'GitHub Repository',
+      name: 'github',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `License`
+  String get license {
+    return Intl.message(
+      'License',
+      name: 'license',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Dart Theme Mode`
   String get themeModeName {
     return Intl.message(

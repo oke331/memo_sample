@@ -33,6 +33,8 @@
   "logout": "ログアウト",
   "logoutMessage": "ログアウトしますか？",
   "logoutSuccessfully": "ログアウトしました！",
+  "github": "GitHubリポジトリへGo!!",
+  "license": "ライセンス情報",
   "@_THTME_MODE_PAGE": {},
   "themeModeName": "ダークテーマモード",
   "darkTheme": "ダークテーマ",
