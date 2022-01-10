@@ -30,7 +30,7 @@ class MemoListBody extends HookConsumerWidget {
           .collection('users')
           .doc(uid)
           .collection('memos')
-          .orderBy('updatedAt')
+          .orderBy('updatedAt', descending: true)
           .withConverter<Memo>(
             fromFirestore: (snapshot, _) => Memo.fromDocumentSnapshot(snapshot),
             toFirestore: (obj, _) => obj.toJson(),
