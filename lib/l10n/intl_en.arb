@@ -1,6 +1,6 @@
 {
   "@_COMMON": {},
-  "cancel": "cancel",
+  "cancel": "Cancel",
   "on": "ON",
   "off": "OFF",
   "failedToFetch": "The acquisition process failed. Please try again.",

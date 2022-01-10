@@ -14,7 +14,7 @@ class SingInPage extends StatelessWidget {
           FocusManager.instance.primaryFocus?.unfocus();
         }
       },
-      child: RegisterScreen(
+      child: SignInScreen(
         subtitleBuilder: (context, action) {
           return Padding(
             padding: const EdgeInsets.only(bottom: 8),

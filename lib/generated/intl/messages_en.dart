@@ -24,7 +24,7 @@ class MessageLookup extends MessageLookupByLibrary {
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
         "appName":
             MessageLookupByLibrary.simpleMessage("Memo Sample Application"),
-        "cancel": MessageLookupByLibrary.simpleMessage("cancel"),
+        "cancel": MessageLookupByLibrary.simpleMessage("Cancel"),
         "createdAt": MessageLookupByLibrary.simpleMessage("Created at"),
         "darkTheme": MessageLookupByLibrary.simpleMessage("Dark Theme"),
         "delete": MessageLookupByLibrary.simpleMessage("delete"),
