@@ -21,12 +21,12 @@ class MemoRepository {
     return Memo.fromDocumentSnapshot(result);
   }
 
-  Future<void> add({
+  Future<DocumentReference> add({
     required String userId,
     required String title,
     required String text,
   }) async {
-    await _firebaseFirestore.memosRef(userId).add({
+    return _firebaseFirestore.memosRef(userId).add({
       MemoField.title: title,
       MemoField.text: text,
       MemoField.createdAt: FieldValue.serverTimestamp(),

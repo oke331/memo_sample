@@ -34,17 +34,18 @@ class MemoController {
 
   MemoRepository get _memoRepository => _read(memoRepositoryProvider);
 
-  Future<void> add({
+  Future<String?> add({
     required String title,
     required String text,
   }) async {
     try {
-      await _memoRepository.add(
+      final result = await _memoRepository.add(
         userId: _userId!,
         title: title,
         text: text,
       );
       _read(memoControllerExceptionProvider.notifier).state = null;
+      return result.id;
     } on Exception catch (e) {
       logger.e(e);
       _read(memoControllerExceptionProvider.notifier).state = e;

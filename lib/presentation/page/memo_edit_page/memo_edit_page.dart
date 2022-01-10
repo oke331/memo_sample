@@ -91,13 +91,11 @@ class MemoEditPage extends HookConsumerWidget {
       );
       return;
     }
-    final titleController = ref.read(memoEditPageTitleControllerProvider);
-    final title = titleController.text;
-    final textController = ref.read(memoEditPageTextControllerProvider);
-    final text = textController.text;
-    final memoId = this.memoId;
+    final title = ref.read(memoEditPageTitleControllerProvider).text;
+    final text = ref.read(memoEditPageTextControllerProvider).text;
+    var memoId = this.memoId;
     if (memoId == null) {
-      await ref.read(memoControllerProvider).add(
+      memoId = await ref.read(memoControllerProvider).add(
             title: title,
             text: text,
           );
@@ -107,6 +105,7 @@ class MemoEditPage extends HookConsumerWidget {
             title: title,
             text: text,
           );
+      ref.refresh(memoProvider(memoId));
     }
 
     final exception = ref.read(memoControllerExceptionProvider.notifier).state;
