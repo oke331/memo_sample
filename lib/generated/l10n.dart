@@ -290,6 +290,26 @@ class S {
     );
   }
 
+  /// `It is over 100,000 words!`
+  String get textLimited {
+    return Intl.message(
+      'It is over 100,000 words!',
+      name: 'textLimited',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `It is over 10,000 words!`
+  String get titleLimited {
+    return Intl.message(
+      'It is over 10,000 words!',
+      name: 'titleLimited',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Setting`
   String get settingName {
     return Intl.message(

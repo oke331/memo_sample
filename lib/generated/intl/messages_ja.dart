@@ -56,8 +56,12 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("メモサンプルアプリにサインインしよう！"),
         "systemTheme": MessageLookupByLibrary.simpleMessage("システムテーマ"),
         "text": MessageLookupByLibrary.simpleMessage("本文"),
+        "textLimited":
+            MessageLookupByLibrary.simpleMessage("100,000文字まで入力可能です！"),
         "themeModeName": MessageLookupByLibrary.simpleMessage("ダークテーマモード"),
         "title": MessageLookupByLibrary.simpleMessage("タイトル"),
+        "titleLimited":
+            MessageLookupByLibrary.simpleMessage("10,000文字まで入力可能です！"),
         "updatedAt": MessageLookupByLibrary.simpleMessage("更新日時")
       };
 }

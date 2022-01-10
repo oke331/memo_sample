@@ -28,6 +28,8 @@
   "saveSuccessfully": "保存しました！",
   "required": "必須入力です",
   "inputError": "入力項目に誤りがあります。",
+  "textLimited": "100,000文字まで入力可能です！",
+  "titleLimited": "10,000文字まで入力可能です！",
   "@_SETTING_PAGE": {},
   "settingName": "設定",
   "logout": "ログアウト",
