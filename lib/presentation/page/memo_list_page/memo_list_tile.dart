@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:memo_sample/presentation/controller/memo_controller/memo_controller.dart';
 import 'package:memo_sample/presentation/page/memo_list_page/memo_list_body.dart';
 import 'package:memo_sample/router.dart';
 import 'package:memo_sample/util/date_time_formatter.dart';
@@ -11,7 +12,12 @@ class MemoListTile extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final memo = ref.watch(currentMemo);
+    final memoId = ref.watch(memoListBodyProvider);
+    final memo = ref.watch(memoProvider(memoId));
+    if (memo == null) {
+      return const SizedBox.shrink();
+    }
+
     final router = ref.watch(routerProvider);
     return ListTile(
       onTap: () => ref.read(routerProvider).go('/detail/${memo.id}'),

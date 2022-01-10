@@ -27,64 +27,54 @@ class MemoEditPage extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final isLoading = useState(false);
-    return ref.watch(memoProvider(memoId)).when(
-          data: (memo) => ProviderScope(
-            overrides: [
-              memoEditPageProvider.overrideWithValue(memo),
-              memoEditPageTitleControllerProvider.overrideWithValue(
-                useTextEditingController(text: memo?.title),
-              ),
-              memoEditPageTextControllerProvider.overrideWithValue(
-                useTextEditingController(text: memo?.text),
-              ),
-            ],
-            child: Consumer(
-              builder: (context, ref, child) => Form(
-                key: _formKey,
-                child: GestureDetector(
-                  onTap: () {
-                    final FocusScopeNode currentScope = FocusScope.of(context);
-                    if (!currentScope.hasPrimaryFocus &&
-                        currentScope.hasFocus) {
-                      FocusManager.instance.primaryFocus?.unfocus();
-                    }
-                  },
-                  child: ModalProgressIndicator(
-                    isLoading: isLoading.value,
-                    child: _scaffold(
-                      context: context,
-                      body: const MemoEditBody(),
-                      appBarActions: [
-                        IconButton(
-                          onPressed: () => onPressedSaveButton(
-                            context: context,
-                            ref: ref,
-                            isLoading: isLoading,
-                          ),
-                          icon: const Icon(Icons.save),
-                        ),
-                      ],
-                    ),
+    final memo = ref.watch(memoProvider(memoId));
+    return ProviderScope(
+      overrides: [
+        memoEditPageProvider.overrideWithValue(memo),
+        memoEditPageTitleControllerProvider.overrideWithValue(
+          useTextEditingController(text: memo?.title),
+        ),
+        memoEditPageTextControllerProvider.overrideWithValue(
+          useTextEditingController(text: memo?.text),
+        ),
+      ],
+      child: Consumer(
+        builder: (context, ref, child) => Form(
+          key: _formKey,
+          child: GestureDetector(
+            onTap: () {
+              final FocusScopeNode currentScope = FocusScope.of(context);
+              if (!currentScope.hasPrimaryFocus && currentScope.hasFocus) {
+                FocusManager.instance.primaryFocus?.unfocus();
+              }
+            },
+            child: ModalProgressIndicator(
+              isLoading: isLoading.value,
+              child: Scaffold(
+                appBar: AppBar(
+                  title: Text(
+                    memoId == null
+                        ? S.of(context).memoCreateName
+                        : S.of(context).memoEditName,
                   ),
+                  actions: [
+                    IconButton(
+                      onPressed: () => onPressedSaveButton(
+                        context: context,
+                        ref: ref,
+                        isLoading: isLoading,
+                      ),
+                      icon: const Icon(Icons.save),
+                    ),
+                  ],
                 ),
+                body: const MemoEditBody(),
               ),
             ),
           ),
-          error: (error, stackTrace) => _scaffold(
-            context: context,
-            body: RetryToFetchWidget(
-              text:
-                  '${S.of(context).failedToFetch} \nError:${error.toString()}',
-              onTap: () => ref.refresh(memoProvider(memoId)),
-            ),
-          ),
-          loading: () => _scaffold(
-            context: context,
-            body: const Center(
-              child: CircularProgressIndicator(),
-            ),
-          ),
-        );
+        ),
+      ),
+    );
   }
 
   Future<void> onPressedSaveButton({
@@ -135,23 +125,5 @@ class MemoEditPage extends HookConsumerWidget {
       SnackBar(content: Text(S.of(context).saveSuccessfully)),
     );
     ref.read(routerProvider).go('/detail/$memoId');
-  }
-
-  Widget _scaffold({
-    required Widget body,
-    required BuildContext context,
-    List<Widget>? appBarActions,
-  }) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(
-          memoId == null
-              ? S.of(context).memoCreateName
-              : S.of(context).memoEditName,
-        ),
-        actions: appBarActions,
-      ),
-      body: body,
-    );
   }
 }

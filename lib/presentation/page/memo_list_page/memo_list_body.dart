@@ -5,10 +5,12 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:memo_sample/generated/l10n.dart';
 import 'package:memo_sample/infrastructure/model/memo.dart';
 import 'package:memo_sample/presentation/controller/auth_controller/auth_controller.dart';
+import 'package:memo_sample/presentation/controller/memo_controller/memo_controller.dart';
 
 import 'memo_list_tile.dart';
 
-final currentMemo = Provider<Memo>((_) => throw UnimplementedError());
+final memoListBodyProvider =
+    Provider<String>((_) => throw UnimplementedError());
 
 class MemoListBody extends HookConsumerWidget {
   const MemoListBody({Key? key}) : super(key: key);
@@ -51,8 +53,11 @@ class MemoListBody extends HookConsumerWidget {
             }
 
             final memo = snapshot.docs[index].data();
+            Future(() {
+              ref.read(memoProvider(memo.id).notifier).state = memo;
+            });
             return ProviderScope(
-              overrides: [currentMemo.overrideWithValue(memo)],
+              overrides: [memoListBodyProvider.overrideWithValue(memo.id)],
               child: const MemoListTile(),
             );
           },
