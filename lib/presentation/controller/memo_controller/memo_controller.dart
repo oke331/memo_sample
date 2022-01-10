@@ -2,6 +2,7 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:memo_sample/infrastructure/model/memo.dart';
 import 'package:memo_sample/infrastructure/repository/memo_repository.dart';
 import 'package:memo_sample/presentation/controller/auth_controller/auth_controller.dart';
+import 'package:memo_sample/util/logger_util.dart';
 
 final memoControllerProvider = Provider((ref) {
   final user =
@@ -45,6 +46,7 @@ class MemoController {
       );
       _read(memoControllerExceptionProvider.notifier).state = null;
     } on Exception catch (e) {
+      logger.e(e);
       _read(memoControllerExceptionProvider.notifier).state = e;
     }
   }
@@ -63,6 +65,7 @@ class MemoController {
       );
       _read(memoControllerExceptionProvider.notifier).state = null;
     } on Exception catch (e) {
+      logger.e(e);
       _read(memoControllerExceptionProvider.notifier).state = e;
     }
   }
@@ -75,6 +78,7 @@ class MemoController {
       );
       _read(memoControllerExceptionProvider.notifier).state = null;
     } on Exception catch (e) {
+      logger.e(e);
       _read(memoControllerExceptionProvider.notifier).state = e;
     }
   }

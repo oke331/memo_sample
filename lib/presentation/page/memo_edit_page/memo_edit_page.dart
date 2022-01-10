@@ -25,7 +25,15 @@ class MemoEditPage extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    ref.listen<Exception?>(memoControllerExceptionProvider, showSnackBar);
+    ref.listen<Exception?>(
+      memoControllerExceptionProvider,
+      (previous, next) => showSnackBar(
+        previous: previous,
+        next: next,
+        context: context,
+      ),
+    );
+
     return ref.watch(memoProvider(memoId)).when(
           data: (memo) => ProviderScope(
             overrides: [
@@ -57,7 +65,12 @@ class MemoEditPage extends HookConsumerWidget {
                           context: context,
                           ref: ref,
                         ),
-                        child: Text(S.of(context).save),
+                        child: Text(
+                          S.of(context).save,
+                          style: TextStyle(
+                            color: Theme.of(context).colorScheme.onPrimary,
+                          ),
+                        ),
                       ),
                     ],
                   ),
@@ -87,11 +100,15 @@ class MemoEditPage extends HookConsumerWidget {
     required WidgetRef ref,
   }) async {
     if (!_formKey.currentState!.validate()) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text(S.of(context).inputError)),
+      );
       return;
     }
-    final controller = ref.read(memoEditPageTitleControllerProvider);
-    final title = controller.text;
-    final text = controller.text;
+    final titleController = ref.read(memoEditPageTitleControllerProvider);
+    final title = titleController.text;
+    final textController = ref.read(memoEditPageTextControllerProvider);
+    final text = textController.text;
     final memoId = this.memoId;
     if (memoId == null) {
       await ref.read(memoControllerProvider).add(
@@ -116,11 +133,15 @@ class MemoEditPage extends HookConsumerWidget {
     ref.read(routerProvider).go('/detail/$memoId');
   }
 
-  void showSnackBar(Exception? previous, Exception? next) {
+  void showSnackBar({
+    required Exception? previous,
+    required Exception? next,
+    required BuildContext context,
+  }) {
     if (next == null) {
       return;
     }
-    ScaffoldMessenger.of(useContext()).showSnackBar(
+    ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(content: Text(next.toString())),
     );
   }

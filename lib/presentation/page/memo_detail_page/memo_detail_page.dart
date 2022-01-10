@@ -32,7 +32,12 @@ class MemoDetailPage extends HookConsumerWidget {
                   TextButton(
                     onPressed: () =>
                         ref.read(routerProvider).go('/edit/$memoId'),
-                    child: Text(S.of(context).edit),
+                    child: Text(
+                      S.of(context).edit,
+                      style: TextStyle(
+                        color: Theme.of(context).colorScheme.onPrimary,
+                      ),
+                    ),
                   ),
                 ],
               ),

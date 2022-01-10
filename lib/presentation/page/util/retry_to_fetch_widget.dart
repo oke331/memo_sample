@@ -13,28 +13,30 @@ class RetryToFetchWidget extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    return InkWell(
-      onTap: onTap,
-      child: Row(
-        mainAxisSize: MainAxisSize.min,
-        mainAxisAlignment: MainAxisAlignment.center,
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          Flexible(
-            flex: 7,
-            child: Text(
-              text,
-              style: const TextStyle(height: 1.2),
+    return Scaffold(
+      body: InkWell(
+        onTap: onTap,
+        child: Row(
+          mainAxisSize: MainAxisSize.min,
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            Flexible(
+              flex: 7,
+              child: Text(
+                text,
+                style: const TextStyle(height: 1.2),
+              ),
             ),
-          ),
-          const Flexible(
-            flex: 1,
-            child: Icon(
-              Icons.refresh,
-              size: 20,
+            const Flexible(
+              flex: 1,
+              child: Icon(
+                Icons.refresh,
+                size: 20,
+              ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }

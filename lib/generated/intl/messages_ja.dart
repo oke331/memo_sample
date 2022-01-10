@@ -32,6 +32,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "empty": MessageLookupByLibrary.simpleMessage("データはありません。"),
         "failedToFetch":
             MessageLookupByLibrary.simpleMessage("取得処理に失敗しました。再取得をお願いします！"),
+        "inputError": MessageLookupByLibrary.simpleMessage("入力項目に誤りがあります。"),
         "logout": MessageLookupByLibrary.simpleMessage("ログアウト"),
         "logoutMessage": MessageLookupByLibrary.simpleMessage("ログアウトしますか？"),
         "memoCreateName": MessageLookupByLibrary.simpleMessage("メモ作成"),
@@ -42,6 +43,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "on": MessageLookupByLibrary.simpleMessage("オン"),
         "registerDescription":
             MessageLookupByLibrary.simpleMessage("メモサンプルアプリにアカウントを登録しよう！"),
+        "required": MessageLookupByLibrary.simpleMessage("必須入力です"),
         "save": MessageLookupByLibrary.simpleMessage("保存"),
         "saveMessage": MessageLookupByLibrary.simpleMessage("保存しました！"),
         "settingName": MessageLookupByLibrary.simpleMessage("設定"),

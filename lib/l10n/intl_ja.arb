@@ -25,6 +25,8 @@
   "text": "本文",
   "save": "保存",
   "saveMessage": "保存しました！",
+  "required": "必須入力です",
+  "inputError": "入力項目に誤りがあります。",
   "@_SETTING_PAGE": {},
   "settingName": "設定",
   "logout": "ログアウト",

@@ -34,6 +34,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "empty": MessageLookupByLibrary.simpleMessage("No data."),
         "failedToFetch": MessageLookupByLibrary.simpleMessage(
             "The acquisition process failed. Please try again."),
+        "inputError": MessageLookupByLibrary.simpleMessage(
+            "There is an error in the input content."),
         "logout": MessageLookupByLibrary.simpleMessage("Logout"),
         "logoutMessage":
             MessageLookupByLibrary.simpleMessage("Would you like to log out?"),
@@ -45,6 +47,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "on": MessageLookupByLibrary.simpleMessage("ON"),
         "registerDescription": MessageLookupByLibrary.simpleMessage(
             "Welcome to Memo Sample Application! Please create an account to continue."),
+        "required": MessageLookupByLibrary.simpleMessage("Required"),
         "save": MessageLookupByLibrary.simpleMessage("Save"),
         "saveMessage": MessageLookupByLibrary.simpleMessage("Save succeeded!"),
         "settingName": MessageLookupByLibrary.simpleMessage("Setting"),

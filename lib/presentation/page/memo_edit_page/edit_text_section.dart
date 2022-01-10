@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:memo_sample/generated/l10n.dart';
 import 'package:memo_sample/presentation/page/memo_edit_page/memo_edit_page.dart';
+import 'package:memo_sample/presentation/page/util/validator.dart';
 
 class EditTextSection extends HookConsumerWidget {
   const EditTextSection({Key? key}) : super(key: key);
@@ -16,6 +17,10 @@ class EditTextSection extends HookConsumerWidget {
         decoration: InputDecoration(
           border: InputBorder.none,
           hintText: S.of(context).text,
+        ),
+        validator: (value) => Validator.memoText(
+          value: value,
+          context: context,
         ),
       ),
     );

@@ -260,6 +260,26 @@ class S {
     );
   }
 
+  /// `Required`
+  String get required {
+    return Intl.message(
+      'Required',
+      name: 'required',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `There is an error in the input content.`
+  String get inputError {
+    return Intl.message(
+      'There is an error in the input content.',
+      name: 'inputError',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Setting`
   String get settingName {
     return Intl.message(

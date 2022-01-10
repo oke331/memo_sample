@@ -19,6 +19,10 @@ class Memo with _$Memo {
 
   factory Memo.fromDocumentSnapshot(DocumentSnapshot documentSnapshot) {
     final data = documentSnapshot.data()! as Map<String, dynamic>;
+    if (documentSnapshot.metadata.hasPendingWrites) {
+      data.update(MemoField.createdAt, (value) => Timestamp.now());
+      data.update(MemoField.updatedAt, (value) => Timestamp.now());
+    }
     return Memo.fromJson({
       MemoField.id: documentSnapshot.id,
       ...data,
