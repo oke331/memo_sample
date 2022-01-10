@@ -6,6 +6,7 @@ import 'package:memo_sample/presentation/page/util/validator.dart';
 
 class EditTextSection extends HookConsumerWidget {
   const EditTextSection({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final controller = ref.watch(memoEditPageTextControllerProvider);
@@ -18,6 +19,7 @@ class EditTextSection extends HookConsumerWidget {
           border: InputBorder.none,
           hintText: S.of(context).text,
         ),
+        autovalidateMode: AutovalidateMode.onUserInteraction,
         validator: (value) => Validator.memoText(
           value: value,
           context: context,

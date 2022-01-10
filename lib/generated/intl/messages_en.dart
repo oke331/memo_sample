@@ -62,9 +62,13 @@ class MessageLookup extends MessageLookupByLibrary {
             "Welcome to Memo Sample Application! Please sign in to continue."),
         "systemTheme": MessageLookupByLibrary.simpleMessage("System Theme"),
         "text": MessageLookupByLibrary.simpleMessage("Text"),
+        "textLimited":
+            MessageLookupByLibrary.simpleMessage("It is over 100,000 words!"),
         "themeModeName":
             MessageLookupByLibrary.simpleMessage("Dart Theme Mode"),
         "title": MessageLookupByLibrary.simpleMessage("Title"),
+        "titleLimited":
+            MessageLookupByLibrary.simpleMessage("It is over 10,000 words!"),
         "updatedAt": MessageLookupByLibrary.simpleMessage("Updated at")
       };
 }
