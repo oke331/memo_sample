@@ -37,7 +37,10 @@ class MemoListTile extends HookConsumerWidget {
               context: context,
               builder: (_) => DeleteDialog(memoId: memo.id),
             ),
-            icon: const Icon(Icons.delete),
+            icon: const Icon(
+              Icons.delete,
+              color: Colors.red,
+            ),
           ),
         ],
       ),
