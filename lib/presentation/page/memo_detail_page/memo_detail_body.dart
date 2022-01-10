@@ -12,20 +12,25 @@ class MemoDetailBody extends HookConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final memo = ref.watch(memoDetailPageProvider);
     final router = ref.watch(routerProvider);
+    final size = MediaQuery.of(context).size;
     return GestureDetector(
       onTap: () => router.go('/detail/${memo.id}/edit'),
       behavior: HitTestBehavior.translucent,
-      child: SafeArea(
-        child: SingleChildScrollView(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              if (memo.title.isNotEmpty) ...[
-                const MemoDetailTitleSection(),
-                const Divider(height: 1)
+      child: SizedBox(
+        height: size.height,
+        width: size.width,
+        child: SafeArea(
+          child: SingleChildScrollView(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                if (memo.title.isNotEmpty) ...[
+                  const MemoDetailTitleSection(),
+                  const Divider(height: 1)
+                ],
+                const MemoDetailTextSection(),
               ],
-              const MemoDetailTextSection(),
-            ],
+            ),
           ),
         ),
       ),
