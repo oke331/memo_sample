@@ -60,17 +60,12 @@ class MemoEditPage extends HookConsumerWidget {
                     context: context,
                     body: const MemoEditBody(),
                     appBarActions: [
-                      TextButton(
+                      IconButton(
                         onPressed: () => onPressedSaveButton(
                           context: context,
                           ref: ref,
                         ),
-                        child: Text(
-                          S.of(context).save,
-                          style: TextStyle(
-                            color: Theme.of(context).colorScheme.onPrimary,
-                          ),
-                        ),
+                        icon: const Icon(Icons.save),
                       ),
                     ],
                   ),

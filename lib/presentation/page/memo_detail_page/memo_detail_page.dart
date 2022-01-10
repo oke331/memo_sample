@@ -29,15 +29,10 @@ class MemoDetailPage extends HookConsumerWidget {
               appBar: AppBar(
                 title: Text(S.of(context).memoDetailName),
                 actions: [
-                  TextButton(
+                  IconButton(
                     onPressed: () =>
-                        ref.read(routerProvider).go('/edit/$memoId'),
-                    child: Text(
-                      S.of(context).edit,
-                      style: TextStyle(
-                        color: Theme.of(context).colorScheme.onPrimary,
-                      ),
-                    ),
+                        ref.read(routerProvider).go('/detail/$memoId/edit'),
+                    icon: const Icon(Icons.edit),
                   ),
                 ],
               ),

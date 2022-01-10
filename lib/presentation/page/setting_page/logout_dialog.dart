@@ -14,7 +14,7 @@ class LogoutDialog extends HookConsumerWidget {
       title: Text(S.of(context).logoutMessage),
       actions: [
         TextButton(
-          onPressed: () => router.pop(context),
+          onPressed: () => router.pop(),
           child: Text(S.of(context).cancel),
         ),
         TextButton(
