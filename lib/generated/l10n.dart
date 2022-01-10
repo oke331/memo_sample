@@ -80,10 +80,10 @@ class S {
     );
   }
 
-  /// `The acquisition process failed. Please try again.`
+  /// `The acquisition process failed. Please tap and retry again.`
   String get failedToFetch {
     return Intl.message(
-      'The acquisition process failed. Please try again.',
+      'The acquisition process failed. Please tap and retry again.',
       name: 'failedToFetch',
       desc: '',
       args: [],

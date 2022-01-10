@@ -35,7 +35,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "edit": MessageLookupByLibrary.simpleMessage("Edit"),
         "empty": MessageLookupByLibrary.simpleMessage("No data."),
         "failedToFetch": MessageLookupByLibrary.simpleMessage(
-            "The acquisition process failed. Please try again."),
+            "The acquisition process failed. Please tap and retry again."),
         "inputError": MessageLookupByLibrary.simpleMessage(
             "There is an error in the input content."),
         "logout": MessageLookupByLibrary.simpleMessage("Logout"),

@@ -6,36 +6,22 @@ class RetryToFetchWidget extends HookConsumerWidget {
     Key? key,
     required this.text,
     required this.onTap,
+    this.padding = const EdgeInsets.all(20),
   }) : super(key: key);
 
   final String text;
   final VoidCallback onTap;
+  final EdgeInsetsGeometry padding;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    return Scaffold(
-      body: InkWell(
+    return Padding(
+      padding: padding,
+      child: InkWell(
         onTap: onTap,
-        child: Row(
-          mainAxisSize: MainAxisSize.min,
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            Flexible(
-              flex: 7,
-              child: Text(
-                text,
-                style: const TextStyle(height: 1.2),
-              ),
-            ),
-            const Flexible(
-              flex: 1,
-              child: Icon(
-                Icons.refresh,
-                size: 20,
-              ),
-            ),
-          ],
+        child: Text(
+          text,
+          style: const TextStyle(height: 1.2),
         ),
       ),
     );

@@ -25,25 +25,44 @@ class MemoDetailPage extends HookConsumerWidget {
             overrides: [
               memoDetailPageProvider.overrideWithValue(memo!),
             ],
-            child: Scaffold(
-              appBar: AppBar(
-                title: Text(S.of(context).memoDetailName),
-                actions: [
-                  IconButton(
-                    onPressed: () =>
-                        ref.read(routerProvider).go('/detail/$memoId/edit'),
-                    icon: const Icon(Icons.edit),
-                  ),
-                ],
-              ),
+            child: _scaffold(
+              context: context,
+              appBarActions: [
+                IconButton(
+                  onPressed: () =>
+                      ref.read(routerProvider).go('/detail/$memoId/edit'),
+                  icon: const Icon(Icons.edit),
+                ),
+              ],
               body: const MemoDetailBody(),
             ),
           ),
-          error: (error, stackTrace) => RetryToFetchWidget(
-            text: '${S.of(context).failedToFetch} \nError:${error.toString()}',
-            onTap: () => ref.refresh(memoProvider(memoId)),
+          error: (error, stackTrace) => _scaffold(
+            context: context,
+            body: RetryToFetchWidget(
+              text:
+                  '${S.of(context).failedToFetch} \nError:${error.toString()}',
+              onTap: () => ref.refresh(memoProvider(memoId)),
+            ),
           ),
-          loading: () => const Center(child: CircularProgressIndicator()),
+          loading: () => _scaffold(
+            context: context,
+            body: const Center(child: CircularProgressIndicator()),
+          ),
         );
+  }
+
+  Widget _scaffold({
+    required Widget body,
+    required BuildContext context,
+    List<Widget>? appBarActions,
+  }) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text(S.of(context).memoDetailName),
+        actions: appBarActions,
+      ),
+      body: body,
+    );
   }
 }

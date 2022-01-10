@@ -31,8 +31,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "deleteSuccessfully": MessageLookupByLibrary.simpleMessage("削除しました！"),
         "edit": MessageLookupByLibrary.simpleMessage("編集"),
         "empty": MessageLookupByLibrary.simpleMessage("データはありません。"),
-        "failedToFetch":
-            MessageLookupByLibrary.simpleMessage("取得処理に失敗しました。再取得をお願いします！"),
+        "failedToFetch": MessageLookupByLibrary.simpleMessage(
+            "取得処理に失敗しました。タップして再取得をお願いします！"),
         "inputError": MessageLookupByLibrary.simpleMessage("入力項目に誤りがあります。"),
         "logout": MessageLookupByLibrary.simpleMessage("ログアウト"),
         "logoutMessage": MessageLookupByLibrary.simpleMessage("ログアウトしますか？"),
