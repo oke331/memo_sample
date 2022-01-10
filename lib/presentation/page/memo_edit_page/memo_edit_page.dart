@@ -5,6 +5,7 @@ import 'package:memo_sample/generated/l10n.dart';
 import 'package:memo_sample/infrastructure/model/memo.dart';
 import 'package:memo_sample/presentation/controller/memo_controller/memo_controller.dart';
 import 'package:memo_sample/presentation/page/memo_edit_page/memo_edit_body.dart';
+import 'package:memo_sample/presentation/page/util/modal_progress_indicator.dart';
 import 'package:memo_sample/presentation/page/util/retry_to_fetch_widget.dart';
 import 'package:memo_sample/router.dart';
 
@@ -25,6 +26,7 @@ class MemoEditPage extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final isLoading = useState(false);
     return ref.watch(memoProvider(memoId)).when(
           data: (memo) => ProviderScope(
             overrides: [
@@ -47,18 +49,22 @@ class MemoEditPage extends HookConsumerWidget {
                       FocusManager.instance.primaryFocus?.unfocus();
                     }
                   },
-                  child: _scaffold(
-                    context: context,
-                    body: const MemoEditBody(),
-                    appBarActions: [
-                      IconButton(
-                        onPressed: () => onPressedSaveButton(
-                          context: context,
-                          ref: ref,
+                  child: ModalProgressIndicator(
+                    isLoading: isLoading.value,
+                    child: _scaffold(
+                      context: context,
+                      body: const MemoEditBody(),
+                      appBarActions: [
+                        IconButton(
+                          onPressed: () => onPressedSaveButton(
+                            context: context,
+                            ref: ref,
+                            isLoading: isLoading,
+                          ),
+                          icon: const Icon(Icons.save),
                         ),
-                        icon: const Icon(Icons.save),
-                      ),
-                    ],
+                      ],
+                    ),
                   ),
                 ),
               ),
@@ -84,13 +90,20 @@ class MemoEditPage extends HookConsumerWidget {
   Future<void> onPressedSaveButton({
     required BuildContext context,
     required WidgetRef ref,
+    required ValueNotifier<bool> isLoading,
   }) async {
+    if (isLoading.value) {
+      return;
+    }
+    isLoading.value = true;
     if (!_formKey.currentState!.validate()) {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(content: Text(S.of(context).inputError)),
       );
+      isLoading.value = false;
       return;
     }
+
     final title = ref.read(memoEditPageTitleControllerProvider).text;
     final text = ref.read(memoEditPageTextControllerProvider).text;
     var memoId = this.memoId;
@@ -113,9 +126,11 @@ class MemoEditPage extends HookConsumerWidget {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(content: Text(exception.toString())),
       );
+      isLoading.value = false;
       return;
     }
 
+    isLoading.value = false;
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(content: Text(S.of(context).saveSuccessfully)),
     );
