@@ -18,7 +18,10 @@ class LogoutDialog extends HookConsumerWidget {
           child: Text(S.of(context).cancel),
         ),
         TextButton(
-          onPressed: ref.read(authControllerProvider.notifier).signOut,
+          onPressed: () {
+            router.go('/sign_in');
+            ref.read(authControllerProvider.notifier).signOut();
+          },
           child: Text(S.of(context).logout),
         )
       ],
