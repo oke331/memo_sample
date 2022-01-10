@@ -45,7 +45,7 @@ service cloud.firestore {
   }
 
   function isValidString(text, min, max){
-    return text is string && min <= text.size() && text.size() <= max * 10;
+    return text is string && min <= text.size() && text.size() <= max;
   }
 
   function isValidWriteAt(value){
