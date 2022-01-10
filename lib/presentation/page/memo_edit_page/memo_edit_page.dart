@@ -40,48 +40,27 @@ class MemoEditPage extends HookConsumerWidget {
             child: Consumer(
               builder: (context, ref, child) => Form(
                 key: _formKey,
-                child: _scaffold(
-                  context: context,
-                  body: const MemoEditBody(),
-                  appBarActions: [
-                    TextButton(
-                      onPressed: () {
-                        if (!_formKey.currentState!.validate()) {
-                          return;
-                        }
-                        final controller =
-                            ref.read(memoEditPageTitleControllerProvider);
-                        final title = controller.text;
-                        final text = controller.text;
-                        final memoId = this.memoId;
-                        if (memoId == null) {
-                          ref.read(memoControllerProvider).add(
-                                title: title,
-                                text: text,
-                              );
-                        } else {
-                          ref.read(memoControllerProvider).update(
-                                memoId: memoId,
-                                title: title,
-                                text: text,
-                              );
-                        }
-
-                        if (ref
-                                .read(memoControllerExceptionProvider.notifier)
-                                .state !=
-                            null) {
-                          return;
-                        }
-
-                        ScaffoldMessenger.of(context).showSnackBar(
-                          SnackBar(content: Text(S.of(context).saveMessage)),
-                        );
-                        ref.read(routerProvider).go('/detail/$memoId');
-                      },
-                      child: Text(S.of(context).save),
-                    ),
-                  ],
+                child: GestureDetector(
+                  onTap: () {
+                    final FocusScopeNode currentScope = FocusScope.of(context);
+                    if (!currentScope.hasPrimaryFocus &&
+                        currentScope.hasFocus) {
+                      FocusManager.instance.primaryFocus?.unfocus();
+                    }
+                  },
+                  child: _scaffold(
+                    context: context,
+                    body: const MemoEditBody(),
+                    appBarActions: [
+                      TextButton(
+                        onPressed: () => onPressedSaveButton(
+                          context: context,
+                          ref: ref,
+                        ),
+                        child: Text(S.of(context).save),
+                      ),
+                    ],
+                  ),
                 ),
               ),
             ),
@@ -103,6 +82,40 @@ class MemoEditPage extends HookConsumerWidget {
         );
   }
 
+  Future<void> onPressedSaveButton({
+    required BuildContext context,
+    required WidgetRef ref,
+  }) async {
+    if (!_formKey.currentState!.validate()) {
+      return;
+    }
+    final controller = ref.read(memoEditPageTitleControllerProvider);
+    final title = controller.text;
+    final text = controller.text;
+    final memoId = this.memoId;
+    if (memoId == null) {
+      await ref.read(memoControllerProvider).add(
+            title: title,
+            text: text,
+          );
+    } else {
+      await ref.read(memoControllerProvider).update(
+            memoId: memoId,
+            title: title,
+            text: text,
+          );
+    }
+
+    if (ref.read(memoControllerExceptionProvider.notifier).state != null) {
+      return;
+    }
+
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(content: Text(S.of(context).saveMessage)),
+    );
+    ref.read(routerProvider).go('/detail/$memoId');
+  }
+
   void showSnackBar(Exception? previous, Exception? next) {
     if (next == null) {
       return;
@@ -119,9 +132,11 @@ class MemoEditPage extends HookConsumerWidget {
   }) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(memoId == null
-            ? S.of(context).memoCreateName
-            : S.of(context).memoEditName),
+        title: Text(
+          memoId == null
+              ? S.of(context).memoCreateName
+              : S.of(context).memoEditName,
+        ),
         actions: appBarActions,
       ),
       body: body,

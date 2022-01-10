@@ -16,8 +16,12 @@ class MemoListBody extends HookConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final uid = ref
         .watch(authControllerProvider.select((value) => value.firebaseUser))
-        .value!
-        .uid;
+        .value
+        ?.uid;
+    if (uid == null) {
+      return const SizedBox.shrink();
+    }
+
     return FirestoreQueryBuilder<Memo>(
       pageSize: 20,
       query: FirebaseFirestore.instance

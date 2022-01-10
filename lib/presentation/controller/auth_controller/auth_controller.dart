@@ -13,9 +13,9 @@ class AuthController extends StateNotifier<AuthState> {
     this._auth,
   ) : super(AuthState()) {
     _auth.authStateChanges().listen(
-      (event) {
+      (user) {
         state = state.copyWith(
-          firebaseUser: AsyncValue.data(event),
+          firebaseUser: AsyncValue.data(user),
         );
       },
     );
