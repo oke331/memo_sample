@@ -16,6 +16,7 @@ class EditTitleSection extends HookConsumerWidget {
           border: InputBorder.none,
           hintText: S.of(context).title,
         ),
+        maxLines: null,
       ),
     );
   }
