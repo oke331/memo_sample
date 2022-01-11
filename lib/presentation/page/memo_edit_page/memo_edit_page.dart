@@ -27,49 +27,59 @@ class MemoEditPage extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final isLoading = useState(false);
+    final titleController = useTextEditingController();
+    final textController = useTextEditingController();
     return ref.watch(memoProvider(memoId)).when(
-          data: (memo) => ProviderScope(
-            overrides: [
-              memoEditPageProvider.overrideWithValue(memo),
-              memoEditPageTitleControllerProvider.overrideWithValue(
-                useTextEditingController(text: memo?.title),
-              ),
-              memoEditPageTextControllerProvider.overrideWithValue(
-                useTextEditingController(text: memo?.text),
-              ),
-            ],
-            child: Consumer(
-              builder: (context, ref, child) => Form(
-                key: _formKey,
-                child: GestureDetector(
-                  onTap: () {
-                    final FocusScopeNode currentScope = FocusScope.of(context);
-                    if (!currentScope.hasPrimaryFocus &&
-                        currentScope.hasFocus) {
-                      FocusManager.instance.primaryFocus?.unfocus();
-                    }
-                  },
-                  child: ModalProgressIndicator(
-                    isLoading: isLoading.value,
-                    child: _scaffold(
-                      context: context,
-                      body: const MemoEditBody(),
-                      appBarActions: [
-                        IconButton(
-                          onPressed: () => onPressedSaveButton(
-                            context: context,
-                            ref: ref,
-                            isLoading: isLoading,
+          data: (memo) {
+            useEffect(() {
+              // 1度のみControllerに初期値を格納
+              titleController.text = memo?.title ?? '';
+              textController.text = memo?.text ?? '';
+            }, []);
+            return ProviderScope(
+              overrides: [
+                memoEditPageProvider.overrideWithValue(memo),
+                memoEditPageTitleControllerProvider.overrideWithValue(
+                  titleController,
+                ),
+                memoEditPageTextControllerProvider.overrideWithValue(
+                  textController,
+                ),
+              ],
+              child: Consumer(
+                builder: (context, ref, child) => Form(
+                  key: _formKey,
+                  child: GestureDetector(
+                    onTap: () {
+                      final FocusScopeNode currentScope =
+                          FocusScope.of(context);
+                      if (!currentScope.hasPrimaryFocus &&
+                          currentScope.hasFocus) {
+                        FocusManager.instance.primaryFocus?.unfocus();
+                      }
+                    },
+                    child: ModalProgressIndicator(
+                      isLoading: isLoading.value,
+                      child: _scaffold(
+                        context: context,
+                        body: const MemoEditBody(),
+                        appBarActions: [
+                          IconButton(
+                            onPressed: () => onPressedSaveButton(
+                              context: context,
+                              ref: ref,
+                              isLoading: isLoading,
+                            ),
+                            icon: const Icon(Icons.save),
                           ),
-                          icon: const Icon(Icons.save),
-                        ),
-                      ],
+                        ],
+                      ),
                     ),
                   ),
                 ),
               ),
-            ),
-          ),
+            );
+          },
           error: (error, stackTrace) => _scaffold(
             context: context,
             body: RetryToFetchWidget(
