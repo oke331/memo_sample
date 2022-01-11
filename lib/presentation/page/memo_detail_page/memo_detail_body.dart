@@ -26,7 +26,10 @@ class MemoDetailBody extends HookConsumerWidget {
               children: [
                 if (memo.title.isNotEmpty) ...[
                   const MemoDetailTitleSection(),
-                  const Divider(height: 1)
+                  const Divider(
+                    height: 1,
+                    thickness: 1,
+                  )
                 ],
                 const MemoDetailTextSection(),
               ],

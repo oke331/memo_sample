@@ -43,8 +43,12 @@ class MemoListBody extends HookConsumerWidget {
         if (snapshot.docs.isEmpty) {
           return Center(child: Text(S.of(context).empty));
         }
-        return ListView.builder(
+        return ListView.separated(
           itemCount: snapshot.docs.length,
+          separatorBuilder: (_, __) => const Divider(
+            height: 1,
+            thickness: 1,
+          ),
           itemBuilder: (context, index) {
             if (snapshot.hasMore && index + 1 == snapshot.docs.length) {
               snapshot.fetchMore();

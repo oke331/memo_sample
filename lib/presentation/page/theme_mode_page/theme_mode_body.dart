@@ -29,7 +29,10 @@ class ThemeModeBody extends HookConsumerWidget {
     ];
     return ListView.separated(
       itemCount: _tileContents.length,
-      separatorBuilder: (_, __) => const Divider(height: 1),
+      separatorBuilder: (_, __) => const Divider(
+        height: 1,
+        thickness: 1,
+      ),
       itemBuilder: (BuildContext context, int index) => _tileContents[index],
     );
   }

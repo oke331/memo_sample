@@ -14,7 +14,10 @@ class MemoEditBody extends HookConsumerWidget {
           child: Column(
             children: const [
               EditTitleSection(),
-              Divider(height: 1),
+              Divider(
+                height: 1,
+                thickness: 1,
+              ),
               EditTextSection(),
             ],
           ),
