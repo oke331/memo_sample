@@ -1,0 +1,55 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    match /users/{userID}/memos/{memoId} {
+      allow read: if isUserAuthenticated(userID);
+
+      allow create: if isUserAuthenticated(userID)
+        && isValidMemo(incomingData())
+        && createdAt()
+        && updatedAt();
+
+      allow update: if isUserAuthenticated(userID)
+        && isValidMemo(incomingData())
+        && updatedAt();
+
+      allow delete: if isUserAuthenticated(userID);
+    }
+  }
+
+  function isValidMemo(memo) {
+    return memo.size() == 4
+      && 'title' in memo
+      && isValidString(memo.title, 0, 10000)
+      && 'text' in memo
+      && isValidString(memo.text, 1, 100000);
+  }
+
+  ///
+  /// 共用メソッド
+  ///
+  function createdAt(){
+    return 'createdAt' in incomingData() && isValidWriteAt(incomingData().createdAt);
+  }
+
+  function updatedAt(){
+    return 'updatedAt' in incomingData() && isValidWriteAt(incomingData().updatedAt);
+  }
+
+  function isUserAuthenticated(userID){
+    return request.auth != null && request.auth.uid == userID;
+  }
+
+  function incomingData(){
+    return request.resource.data;
+  }
+
+  function isValidString(text, min, max){
+    return text is string && min <= text.size() && text.size() <= max;
+  }
+
+  function isValidWriteAt(value){
+    return value is timestamp
+        && value == request.time;
+  }
+}

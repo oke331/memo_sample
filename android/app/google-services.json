@@ -1,0 +1,54 @@
+{
+  "project_info": {
+    "project_number": "390695659143",
+    "project_id": "memosample-f9b97",
+    "storage_bucket": "memosample-f9b97.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:390695659143:android:62c6ab0d9fa6453e3cfa22",
+        "android_client_info": {
+          "package_name": "oke331.memo_sample"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "390695659143-63ibab81j2rokejc9mpn4pkjpa6pvisg.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "oke331.memo_sample",
+            "certificate_hash": "c90fd91409ee072fa305e70fc34dcf95e3b21992"
+          }
+        },
+        {
+          "client_id": "390695659143-r5u15fi9k62c2hq8nirogkfbdc4bbaue.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCIST7wu6paY-RjBDpl2Ck_wK93xoiKp94"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "390695659143-r5u15fi9k62c2hq8nirogkfbdc4bbaue.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "390695659143-ktv6q55llipea7f90ivan3s95l2n0hgf.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "oke331.memoSample"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

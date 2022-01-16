@@ -33,6 +33,23 @@
   <link rel="manifest" href="manifest.json">
 </head>
 <body>
+  <!-- Following is needed to use FlutterFire -->
+  <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+  <!-- Firebase Configuration -->
+  <script>
+    var firebaseConfig = {
+      apiKey: "AIzaSyBImDqltqlhjZ56ubxZq1hy6e1xm9Q-wn0",
+      authDomain: "memosample-f9b97.firebaseapp.com",
+      projectId: "memosample-f9b97",
+      storageBucket: "memosample-f9b97.appspot.com",
+      messagingSenderId: "390695659143",
+      appId: "1:390695659143:web:012638264d07efee3cfa22",
+      measurementId: "G-M3X9D8DEP6"
+    };
+
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+  </script>
   <!-- This script installs service_worker.js to provide PWA functionality to
        application. For more information, see:
        https://developers.google.com/web/fundamentals/primers/service-workers -->
