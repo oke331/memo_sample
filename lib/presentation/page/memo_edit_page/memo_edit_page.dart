@@ -117,18 +117,18 @@ class MemoEditPage extends HookConsumerWidget {
     final title = ref.read(memoEditPageTitleControllerProvider).text;
     final text = ref.read(memoEditPageTextControllerProvider).text;
     var memoId = this.memoId;
-    if (memoId == null) {
-      memoId = await ref.read(memoControllerProvider).add(
-            title: title,
-            text: text,
-          );
-    } else {
+    final isUpdate = memoId != null;
+    if (isUpdate) {
       await ref.read(memoControllerProvider).update(
             memoId: memoId,
             title: title,
             text: text,
           );
-      ref.refresh(memoProvider(memoId));
+    } else {
+      memoId = await ref.read(memoControllerProvider).add(
+            title: title,
+            text: text,
+          );
     }
 
     final exception = ref.read(memoControllerExceptionProvider.notifier).state;
@@ -140,6 +140,9 @@ class MemoEditPage extends HookConsumerWidget {
       return;
     }
 
+    if (isUpdate) {
+      ref.refresh(memoProvider(memoId));
+    }
     isLoading.value = false;
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(content: Text(S.of(context).saveSuccessfully)),
