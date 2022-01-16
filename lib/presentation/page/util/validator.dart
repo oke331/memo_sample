@@ -6,7 +6,7 @@ class Validator {
     required String? value,
     required BuildContext context,
   }) {
-    if (value != null && value.characters.length > 10000) {
+    if (value != null && value.length > 10000) {
       return S.of(context).titleLimited;
     }
     return null;
@@ -20,7 +20,7 @@ class Validator {
       return S.of(context).required;
     }
 
-    if (value.characters.length > 100000) {
+    if (value.length > 100000) {
       return S.of(context).textLimited;
     }
     return null;
