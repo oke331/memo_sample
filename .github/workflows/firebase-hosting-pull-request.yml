@@ -21,7 +21,7 @@ jobs:
       - name: Download Flutter packages
         run: fvm flutter pub get
 
-      - run: "flutter build web --web-renderer html "
+      - run: "fvm flutter build web --web-renderer html "
       - uses: FirebaseExtended/action-hosting-deploy@v0
         with:
           repoToken: "${{ secrets.GITHUB_TOKEN }}"
