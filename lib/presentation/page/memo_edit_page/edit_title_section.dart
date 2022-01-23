@@ -7,12 +7,15 @@ import 'package:memo_sample/presentation/page/util/validator.dart';
 class EditTitleSection extends HookConsumerWidget {
   const EditTitleSection({Key? key}) : super(key: key);
 
+  static const textFormFieldKey = ValueKey('EditTitleSectionTextFormField');
+
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final controller = ref.watch(memoEditPageTitleControllerProvider);
     return Padding(
       padding: const EdgeInsets.all(20),
       child: TextFormField(
+        key: textFormFieldKey,
         controller: controller,
         decoration: InputDecoration(
           border: InputBorder.none,

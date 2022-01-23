@@ -5,13 +5,15 @@
 import 'dart:async' as _i7;
 
 import 'package:cloud_firestore/cloud_firestore.dart' as _i3;
-import 'package:firebase_auth/firebase_auth.dart' as _i8;
+import 'package:firebase_auth/firebase_auth.dart' as _i9;
 import 'package:hooks_riverpod/hooks_riverpod.dart' as _i4;
 import 'package:memo_sample/infrastructure/model/memo.dart' as _i2;
 import 'package:memo_sample/infrastructure/repository/memo_repository.dart'
     as _i6;
 import 'package:memo_sample/presentation/controller/auth_controller/auth_controller.dart'
     as _i5;
+import 'package:memo_sample/presentation/controller/memo_controller/memo_controller.dart'
+    as _i8;
 import 'package:mockito/mockito.dart' as _i1;
 
 // ignore_for_file: avoid_redundant_argument_values
@@ -112,6 +114,32 @@ class MockMemoRepository extends _i1.Mock implements _i6.MemoRepository {
           returnValueForMissingStub: Future<void>.value()) as _i7.Future<void>);
 }
 
+/// A class which mocks [MemoController].
+///
+/// See the documentation for Mockito's code generation for more information.
+class MockMemoController extends _i1.Mock implements _i8.MemoController {
+  MockMemoController() {
+    _i1.throwOnMissingStub(this);
+  }
+
+  @override
+  _i7.Future<String?> add({String? title, String? text}) => (super.noSuchMethod(
+      Invocation.method(#add, [], {#title: title, #text: text}),
+      returnValue: Future<String?>.value()) as _i7.Future<String?>);
+  @override
+  _i7.Future<void> update({String? memoId, String? title, String? text}) =>
+      (super.noSuchMethod(
+          Invocation.method(
+              #update, [], {#memoId: memoId, #title: title, #text: text}),
+          returnValue: Future<void>.value(),
+          returnValueForMissingStub: Future<void>.value()) as _i7.Future<void>);
+  @override
+  _i7.Future<void> delete({String? memoId}) =>
+      (super.noSuchMethod(Invocation.method(#delete, [], {#memoId: memoId}),
+          returnValue: Future<void>.value(),
+          returnValueForMissingStub: Future<void>.value()) as _i7.Future<void>);
+}
+
 /// A class which mocks [AuthState].
 ///
 /// See the documentation for Mockito's code generation for more information.
@@ -125,10 +153,10 @@ class MockAuthState extends _i1.Mock implements _i5.AuthState {
       (super.noSuchMethod(Invocation.getter(#hasAlreadySignedIn),
           returnValue: false) as bool);
   @override
-  _i4.AsyncValue<_i8.User?> get firebaseUser =>
+  _i4.AsyncValue<_i9.User?> get firebaseUser =>
       (super.noSuchMethod(Invocation.getter(#firebaseUser),
-              returnValue: _FakeAsyncValue_4<_i8.User?>())
-          as _i4.AsyncValue<_i8.User?>);
+              returnValue: _FakeAsyncValue_4<_i9.User?>())
+          as _i4.AsyncValue<_i9.User?>);
   @override
   _i5.$AuthStateCopyWith<_i5.AuthState> get copyWith =>
       (super.noSuchMethod(Invocation.getter(#copyWith),
