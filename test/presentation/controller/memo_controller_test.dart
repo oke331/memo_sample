@@ -1,3 +1,4 @@
+import 'package:firebase_auth_mocks/firebase_auth_mocks.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:memo_sample/infrastructure/model/memo.dart';
@@ -45,8 +46,7 @@ void main() {
           ),
         ).thenAnswer((_) async => result);
 
-        final mockUser = MockUser();
-        when(mockUser.uid).thenReturn('test');
+        final mockUser = MockUser(uid: 'test');
         final mockAuthState = MockAuthState();
         when(mockAuthState.firebaseUser).thenReturn(AsyncData(mockUser));
         final mockAuthController = MockAuthController(mockAuthState);
