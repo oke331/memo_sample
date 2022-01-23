@@ -1,11 +1,12 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:memo_sample/infrastructure/provider/firebase_provider.dart';
 
 part "auth_controller.freezed.dart";
 
 final authControllerProvider = StateNotifierProvider<AuthController, AuthState>(
-  (ref) => AuthController._(FirebaseAuth.instance),
+  (ref) => AuthController._(ref.watch(firebaseAuthProvider)),
 );
 
 class AuthController extends StateNotifier<AuthState> {

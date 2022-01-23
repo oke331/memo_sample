@@ -1,9 +1,9 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutterfire_ui/firestore.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:memo_sample/generated/l10n.dart';
 import 'package:memo_sample/infrastructure/model/memo.dart';
+import 'package:memo_sample/infrastructure/provider/firebase_provider.dart';
 import 'package:memo_sample/presentation/controller/auth_controller/auth_controller.dart';
 
 import 'memo_list_tile.dart';
@@ -24,7 +24,8 @@ class MemoListBody extends HookConsumerWidget {
 
     return FirestoreQueryBuilder<Memo>(
       pageSize: 20,
-      query: FirebaseFirestore.instance
+      query: ref
+          .watch(firebaseFirestoreProvider)
           .collection('users')
           .doc(uid)
           .collection('memos')
