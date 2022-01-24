@@ -105,7 +105,7 @@ void main() {
       testWidgets('show required text', (tester) async {
         final mockMemoProvider =
             FutureProvider.family.autoDispose<Memo?, String?>(
-          (_, __) => Future(() => null),
+          (_, __) => null,
         );
         await tester.pumpWidget(
           ProviderScope(
@@ -116,7 +116,6 @@ void main() {
           ),
         );
         await tester.pump();
-        await tester.pumpAndSettle();
 
         await tester.tap(find.byIcon(Icons.save));
         await tester.pump();
@@ -128,11 +127,11 @@ void main() {
       });
     });
 
-    group('when input correctly words', () {
+    group('when input correctly words and create memo', () {
       testWidgets('show successfully text', (tester) async {
         final mockMemoProvider =
             FutureProvider.family.autoDispose<Memo?, String?>(
-          (_, __) => Future(() => null),
+          (_, __) => null,
         );
         final mockMemoController = MockMemoController();
         when(mockMemoController.add(
@@ -149,7 +148,44 @@ void main() {
           ),
         );
         await tester.pump();
-        await tester.pumpAndSettle();
+
+        await tester.enterText(
+          find.byKey(EditTextSection.textFormFieldKey),
+          'test',
+        );
+
+        await tester.tap(find.byIcon(Icons.save));
+        await tester.pump();
+        expect(find.text('Save Successfully!'), findsOneWidget);
+      });
+    });
+
+    group('when input correctly words and update memo', () {
+      testWidgets('show successfully text', (tester) async {
+        final mockMemo = MockMemo();
+        const id = 'idTest';
+        when(mockMemo.id).thenReturn(id);
+        when(mockMemo.text).thenReturn('testText');
+        when(mockMemo.title).thenReturn('testTitle');
+        final mockMemoProvider =
+            FutureProvider.family.autoDispose<Memo?, String?>(
+          (_, __) => mockMemo,
+        );
+        final mockMemoController = MockMemoController();
+        when(mockMemoController.update(
+          title: anyNamed('title'),
+          text: anyNamed('text'),
+        )).thenAnswer((_) async => '');
+        await tester.pumpWidget(
+          ProviderScope(
+            overrides: [
+              memoControllerProvider.overrideWithValue(mockMemoController),
+              memoProvider.overrideWithProvider(mockMemoProvider),
+            ],
+            child: wrapWithMaterial(MemoEditPage(memoId: id)),
+          ),
+        );
+        await tester.pump();
 
         await tester.enterText(
           find.byKey(EditTextSection.textFormFieldKey),
