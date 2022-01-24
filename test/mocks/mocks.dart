@@ -9,4 +9,7 @@ class MockStateNotifier<T> extends StateNotifier<T> with Mock {
 class MockAuthController extends MockStateNotifier<AuthState>
     implements AuthController {
   MockAuthController(AuthState authState) : super(authState);
+
+  @override
+  Future<void> signOut() async {}
 }
